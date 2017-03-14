@@ -328,6 +328,17 @@
 
           
           
+             <span id="/2017/02/26/Problem-in-Accounting/" class="leancloud_visitors" data-flag-title="项目中遇到的问题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
           
 
@@ -358,6 +369,7 @@
 <h1 id="重写DatePicker实现只显示年月"><a href="#重写DatePicker实现只显示年月" class="headerlink" title="重写DatePicker实现只显示年月"></a>重写DatePicker实现只显示年月</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public class YearMonthPickerDialog extends DatePickerDialog &#123;</div><div class="line">    public YearMonthPickerDialog(Context context, int themeResId) &#123;</div><div class="line">        super(context, themeResId);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public YearMonthPickerDialog(Context context, OnDateSetListener listener, int year, int month, int dayOfMonth) &#123;</div><div class="line">        super(context, listener, year, month, dayOfMonth);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public YearMonthPickerDialog(Context context) &#123;</div><div class="line">        super(context);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public YearMonthPickerDialog(Context context, int themeResId, OnDateSetListener listener, int year, int monthOfYear, int dayOfMonth) &#123;</div><div class="line">        super(context, themeResId, listener, year, monthOfYear, dayOfMonth);</div><div class="line">        this.setTitle(year + &quot;年&quot; + (monthOfYear + 1) + &quot;月&quot;);</div><div class="line"></div><div class="line">        ((ViewGroup) ((ViewGroup) this.getDatePicker().getChildAt(0)).getChildAt(0)).getChildAt(2).setVisibility(View.GONE);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onDateChanged(DatePicker view, int year, int month, int dayOfMonth) &#123;</div><div class="line">        super.onDateChanged(view, year, month, dayOfMonth);</div><div class="line">        this.setTitle(year + &quot;年&quot; + (month + 1) + &quot;月&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h1 id="ArrayList-sort-无效"><a href="#ArrayList-sort-无效" class="headerlink" title="ArrayList.sort()无效"></a>ArrayList.sort()无效</h1><p>类实现comparator重写其compare方法时，在jdk为1.6时返回值为1和0，jdk为1.7时返回值为一对相反数，如-1和1</p>
 <h1 id="自定义dialog位置"><a href="#自定义dialog位置" class="headerlink" title="自定义dialog位置"></a>自定义dialog位置</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Window dialogWindow = dialog.getWindow();</div><div class="line">WindowManager.LayoutParams lp = dialogWindow.getAttributes();</div><div class="line">dialogWindow.setGravity(Gravity.LEFT | Gravity.TOP);</div></pre></td></tr></table></figure>
+<h1 id="DatePicker样式"><a href="#DatePicker样式" class="headerlink" title="DatePicker样式"></a>DatePicker样式</h1><p><code>android:datePickerMode=&quot;spinner&quot;</code></p>
 
           
         
@@ -467,6 +479,17 @@
           
 
           
+          
+             <span id="/2017/02/18/Handler/" class="leancloud_visitors" data-flag-title="Handler工作原理分析">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -612,6 +635,17 @@
           
 
           
+          
+             <span id="/2017/02/18/Markdown/" class="leancloud_visitors" data-flag-title="Markdown用法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -786,6 +820,17 @@
           
 
           
+          
+             <span id="/2017/02/17/hello/" class="leancloud_visitors" data-flag-title="hello">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -1093,6 +1138,113 @@
   
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("M4gJnaXlR3FPcPn2E4QQyJkF-gzGzoHsz", "Ef0ByLitFLB81iiqCuWhPn2a");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 
