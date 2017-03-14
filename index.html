@@ -359,7 +359,8 @@
       
         
           
-          获取不到Edittext内容问题代码如下：123view = LayoutInflater.from(AddCostActivity.this).inflate(R.layout.activity_add_cost,null);informationText = (EditText) view.fi
+          获取不到Edittext内容问题代码如下：123view = LayoutInflater.from(AddCostActivity.this).inflate(R.layout.activity_add_cost,null);informationText = (EditText) view.findViewById(R.id.information_another_edittext);costText = (FormEditText) view.findViewById(R.id.cost_another_edittext);
+改正代码如下：12informationText = (EditText) findViewById(R.id.information_another_edittext);costText = (FormEditText) findViewById(R.id.c
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -509,7 +510,8 @@
           
             要了解Handler的工作原理，首先要了解ThreadLocal。
 ThreadLocal ThreadLocal是一个线程内部的数据存储类，通过它可以在指定线程内存储数据，并且其他线程无法获取到这些数据。它的一个典型应用是Looper，它的另一个使用场景是复杂逻辑下的对象传递。
- 可通过以下代
+ 可通过以下代码来创建一个ThreadLocal：private ThreadLocal&lt;Boolean&gt; mThreadLocal = new ThreadLocal&lt;Boolean&gt;();通过调用它的set和get方法来实现对数据的存储：12mThreadLocal.set(true);mThreadLocal.get();
+下面我们来看一下它的set和get方法：12345678public void set(T value) &#123;        Thread t = T
           ...
           <!--noindex-->
           <div class="post-button text-center">
