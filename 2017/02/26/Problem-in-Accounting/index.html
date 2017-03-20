@@ -93,7 +93,7 @@
 <meta property="og:url" content="http://byacht.github.io/2017/02/26/Problem-in-Accounting/index.html">
 <meta property="og:site_name" content="Byacht">
 <meta property="og:description" content="获取不到Edittext内容问题代码如下：123view = LayoutInflater.from(AddCostActivity.this).inflate(R.layout.activity_add_cost,null);informationText = (EditText) view.findViewById(R.id.information_another_edittext);cost">
-<meta property="og:updated_time" content="2017-03-11T15:11:20.688Z">
+<meta property="og:updated_time" content="2017-03-20T05:30:53.984Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="项目中遇到的问题">
 <meta name="twitter:description" content="获取不到Edittext内容问题代码如下：123view = LayoutInflater.from(AddCostActivity.this).inflate(R.layout.activity_add_cost,null);informationText = (EditText) view.findViewById(R.id.information_another_edittext);cost">
@@ -364,6 +364,10 @@
 <h1 id="ArrayList-sort-无效"><a href="#ArrayList-sort-无效" class="headerlink" title="ArrayList.sort()无效"></a>ArrayList.sort()无效</h1><p>类实现comparator重写其compare方法时，在jdk为1.6时返回值为1和0，jdk为1.7时返回值为一对相反数，如-1和1</p>
 <h1 id="自定义dialog位置"><a href="#自定义dialog位置" class="headerlink" title="自定义dialog位置"></a>自定义dialog位置</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Window dialogWindow = dialog.getWindow();</div><div class="line">WindowManager.LayoutParams lp = dialogWindow.getAttributes();</div><div class="line">dialogWindow.setGravity(Gravity.LEFT | Gravity.TOP);</div></pre></td></tr></table></figure>
 <h1 id="DatePicker样式"><a href="#DatePicker样式" class="headerlink" title="DatePicker样式"></a>DatePicker样式</h1><p><code>android:datePickerMode=&quot;spinner&quot;</code></p>
+<p>#RecylerView间距大</p>
+<p>将item的布局文件的高度设置成wrap_content</p>
+<p>#调用notifyDataSetChanged后RecylerView不更新</p>
+<p>传给adapter的数据（list）必须唯一，即List为同一地址</p>
 
       
     </div>
@@ -409,6 +413,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/20/GreenDao-Notes/" rel="prev" title="GreenDao基本用法及其query方法详解">
+                GreenDao基本用法及其query方法详解 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -484,7 +492,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -502,7 +510,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
