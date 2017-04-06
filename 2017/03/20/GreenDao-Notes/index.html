@@ -97,7 +97,7 @@ GreenDao的配置12345678910111213141516171819// In your root build.gradle file:
 <meta property="og:description" content="原创文章，转载请注明出处
 
 GreenDao的配置12345678910111213141516171819// In your root build.gradle file:buildscript &amp;#123;    repositories &amp;#123;        jcenter()        mavenCentral() &amp;lt;-- add repository    &amp;#125">
-<meta property="og:updated_time" content="2017-03-20T09:29:23.299Z">
+<meta property="og:updated_time" content="2017-03-20T09:32:41.875Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GreenDao基本用法及其query方法详解">
 <meta name="twitter:description" content="原创文章，转载请注明出处
@@ -385,7 +385,7 @@ GreenDao的配置12345678910111213141516171819// In your root build.gradle file:
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">QueryBuilder&lt;User&gt; qb = userDao.queryBuilder();</div><div class="line">qb.where(Properties.FirstName.eq(&quot;Joe&quot;),</div><div class="line">qb.or(Properties.YearOfBirth.gt(1970),</div><div class="line">qb.and(Properties.YearOfBirth.eq(1970), Properties.MonthOfBirth.ge(10))));</div><div class="line">List&lt;User&gt; youngJoes = qb.list();</div></pre></td></tr></table></figure>
 <h2 id="复用query"><a href="#复用query" class="headerlink" title="复用query"></a>复用query</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// fetch users with Joe as a first name born in 1970</div><div class="line">Query&lt;User&gt; query = userDao.queryBuilder().where(</div><div class="line">    Properties.FirstName.eq(&quot;Joe&quot;), Properties.YearOfBirth.eq(1970)</div><div class="line">).build();</div><div class="line">List&lt;User&gt; joesOf1970 = query.list();</div><div class="line"> </div><div class="line">// using the same Query object, we can change the parameters</div><div class="line">// to search for Marias born in 1977 later:</div><div class="line">query.setParameter(0, &quot;Maria&quot;);</div><div class="line">query.setParameter(1, 1977);</div><div class="line">List&lt;User&gt; mariasOf1977 = query.list();</div></pre></td></tr></table></figure>
 <p>如代码所示，<code>setParameter</code>的第一个参数表示更改的条件对应原先query的第几个条件。</p>
-<p>##多线程查询<br>从greenDAO 1.3版本开始，实例化Query对象均会绑定到其自己的线程，这样我们就可以安全的设置Query参数，因为其他线程无法影响到。如果其他线程使用别的线程的query（比如设置参数、执行查询）将会抛出异常。因此，我们也不需要做同步工作，而且不要加锁，因为加入相关的事务用到了该Query对象将导致死锁。为完全地避免可能产生的死锁，1.3版本引入了forCurrentThread()方法。该方法将返回本线程内的Query实例，每次调用该方法时，参数均会被重置为最初创建时的一样。</p>
+<h2 id="多线程查询"><a href="#多线程查询" class="headerlink" title="多线程查询"></a>多线程查询</h2><p>从greenDAO 1.3版本开始，实例化Query对象均会绑定到其自己的线程，这样我们就可以安全的设置Query参数，因为其他线程无法影响到。如果其他线程使用别的线程的query（比如设置参数、执行查询）将会抛出异常。因此，我们也不需要做同步工作，而且不要加锁，因为加入相关的事务用到了该Query对象将导致死锁。为完全地避免可能产生的死锁，1.3版本引入了forCurrentThread()方法。该方法将返回本线程内的Query实例，每次调用该方法时，参数均会被重置为最初创建时的一样。</p>
 <h2 id="LazyList"><a href="#LazyList" class="headerlink" title="LazyList"></a>LazyList</h2><p>list(): 所有查询结果均会被加载到内存中，返回一个ArrayList。<br>listLazy(): 查询结果会根据需要加载到内存中。列表中的元素仅在accessed for the first time，它才会被加载并缓存。该方法必须主动关闭（Must be closed）。</p>
 <h2 id="raw-query"><a href="#raw-query" class="headerlink" title="raw query"></a>raw query</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Query&lt;User&gt; query = userDao.queryBuilder().where(</div><div class="line">  new StringCondition(&quot;_ID IN &quot; +</div><div class="line">    &quot;(SELECT USER_ID FROM USER_MESSAGE WHERE READ_FLAG = 0)&quot;)</div><div class="line">).build();</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Query&lt;User&gt; query = userDao.queryRawCreate(</div><div class="line">  &quot;, GROUP G WHERE G.NAME=? AND T.GROUP_ID=G._ID&quot;, &quot;admin&quot;</div><div class="line">);</div></pre></td></tr></table></figure>
@@ -435,6 +435,10 @@ GreenDao的配置12345678910111213141516171819// In your root build.gradle file:
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/23/GuiLin/" rel="prev" title="桂林">
+                桂林 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -510,7 +514,7 @@ GreenDao的配置12345678910111213141516171819// In your root build.gradle file:
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -528,7 +532,7 @@ GreenDao的配置12345678910111213141516171819// In your root build.gradle file:
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -574,7 +578,7 @@ GreenDao的配置12345678910111213141516171819// In your root build.gradle file:
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GreenDao的配置"><span class="nav-number">1.</span> <span class="nav-text">GreenDao的配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建实体类"><span class="nav-number">2.</span> <span class="nav-text">创建实体类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GreenDao的基本使用之增删改查"><span class="nav-number">3.</span> <span class="nav-text">GreenDao的基本使用之增删改查</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化数据库"><span class="nav-number">3.1.</span> <span class="nav-text">初始化数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加数据"><span class="nav-number">3.2.</span> <span class="nav-text">添加数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除数据"><span class="nav-number">3.3.</span> <span class="nav-text">删除数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新数据"><span class="nav-number">3.4.</span> <span class="nav-text">更新数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询数据"><span class="nav-number">3.5.</span> <span class="nav-text">查询数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GreenDao查询方法详解"><span class="nav-number">4.</span> <span class="nav-text">GreenDao查询方法详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#order-limit-offset"><span class="nav-number">4.1.</span> <span class="nav-text">order,limit,offset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询某一范围"><span class="nav-number">4.2.</span> <span class="nav-text">查询某一范围</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复用query"><span class="nav-number">4.3.</span> <span class="nav-text">复用query</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LazyList"><span class="nav-number">4.4.</span> <span class="nav-text">LazyList</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#raw-query"><span class="nav-number">4.5.</span> <span class="nav-text">raw query</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GreenDao的配置"><span class="nav-number">1.</span> <span class="nav-text">GreenDao的配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建实体类"><span class="nav-number">2.</span> <span class="nav-text">创建实体类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GreenDao的基本使用之增删改查"><span class="nav-number">3.</span> <span class="nav-text">GreenDao的基本使用之增删改查</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化数据库"><span class="nav-number">3.1.</span> <span class="nav-text">初始化数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加数据"><span class="nav-number">3.2.</span> <span class="nav-text">添加数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除数据"><span class="nav-number">3.3.</span> <span class="nav-text">删除数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新数据"><span class="nav-number">3.4.</span> <span class="nav-text">更新数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询数据"><span class="nav-number">3.5.</span> <span class="nav-text">查询数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GreenDao查询方法详解"><span class="nav-number">4.</span> <span class="nav-text">GreenDao查询方法详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#order-limit-offset"><span class="nav-number">4.1.</span> <span class="nav-text">order,limit,offset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询某一范围"><span class="nav-number">4.2.</span> <span class="nav-text">查询某一范围</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复用query"><span class="nav-number">4.3.</span> <span class="nav-text">复用query</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多线程查询"><span class="nav-number">4.4.</span> <span class="nav-text">多线程查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LazyList"><span class="nav-number">4.5.</span> <span class="nav-text">LazyList</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#raw-query"><span class="nav-number">4.6.</span> <span class="nav-text">raw query</span></a></li></ol></li></ol></div>
             
 
           </div>
