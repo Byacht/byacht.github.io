@@ -87,17 +87,50 @@
 
 
 
-<meta name="description" content="创建 Retrofit 实例12345Retrofit retrofit = new Retrofit.Builder()                .baseUrl(&amp;quot;http://gank.io/&amp;quot;)                .addConverterFactory(GsonConverterFactory.create())                .ad">
+<meta name="description" content="if(&quot;123456&quot;==prompt(&quot;请输入密码&quot;))
+    {
+        alert(&quot;正确&quot;);
+    }
+    else
+    {
+        alert(&quot;错误&quot;);
+        location=&quot;https://byacht.github.io/&quot;; #返回网站，请自定义
+    }
+
+
+创建 Retrofit 实例12345Retrofit ret">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Retrofit2 用法总结">
 <meta property="og:url" content="http://byacht.github.io/2017/04/06/photo-wall/index.html">
 <meta property="og:site_name" content="Byacht">
-<meta property="og:description" content="创建 Retrofit 实例12345Retrofit retrofit = new Retrofit.Builder()                .baseUrl(&amp;quot;http://gank.io/&amp;quot;)                .addConverterFactory(GsonConverterFactory.create())                .ad">
+<meta property="og:description" content="if(&quot;123456&quot;==prompt(&quot;请输入密码&quot;))
+    {
+        alert(&quot;正确&quot;);
+    }
+    else
+    {
+        alert(&quot;错误&quot;);
+        location=&quot;https://byacht.github.io/&quot;; #返回网站，请自定义
+    }
+
+
+创建 Retrofit 实例12345Retrofit ret">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4798880-56fe4cce4079402f.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-04-06T15:41:17.717Z">
+<meta property="og:updated_time" content="2017-04-06T15:52:11.781Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Retrofit2 用法总结">
-<meta name="twitter:description" content="创建 Retrofit 实例12345Retrofit retrofit = new Retrofit.Builder()                .baseUrl(&amp;quot;http://gank.io/&amp;quot;)                .addConverterFactory(GsonConverterFactory.create())                .ad">
+<meta name="twitter:description" content="if(&quot;123456&quot;==prompt(&quot;请输入密码&quot;))
+    {
+        alert(&quot;正确&quot;);
+    }
+    else
+    {
+        alert(&quot;错误&quot;);
+        location=&quot;https://byacht.github.io/&quot;; #返回网站，请自定义
+    }
+
+
+创建 Retrofit 实例12345Retrofit ret">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4798880-56fe4cce4079402f.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -355,7 +388,19 @@
       
 
       
-        <h1 id="创建-Retrofit-实例"><a href="#创建-Retrofit-实例" class="headerlink" title="创建 Retrofit 实例"></a>创建 Retrofit 实例</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Retrofit retrofit = new Retrofit.Builder()</div><div class="line">                .baseUrl(&quot;http://gank.io/&quot;)</div><div class="line">                .addConverterFactory(GsonConverterFactory.create())</div><div class="line">                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())</div><div class="line">                .build();</div></pre></td></tr></table></figure>
+        <script>
+    if("123456"==prompt("请输入密码"))
+    {
+        alert("正确");
+    }
+    else
+    {
+        alert("错误");
+        location="https://byacht.github.io/"; #返回网站，请自定义
+    }
+</script>
+
+<h1 id="创建-Retrofit-实例"><a href="#创建-Retrofit-实例" class="headerlink" title="创建 Retrofit 实例"></a>创建 Retrofit 实例</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Retrofit retrofit = new Retrofit.Builder()</div><div class="line">                .baseUrl(&quot;http://gank.io/&quot;)</div><div class="line">                .addConverterFactory(GsonConverterFactory.create())</div><div class="line">                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())</div><div class="line">                .build();</div></pre></td></tr></table></figure>
 <p><code>baseUrl</code>即请求的地址</p>
 <h1 id="定义接口"><a href="#定义接口" class="headerlink" title="定义接口"></a>定义接口</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public interface MeiZhiApi &#123;</div><div class="line"></div><div class="line">    @GET(&quot;/api/data/福利/10/&#123;page&#125;&quot;)</div><div class="line">    Call&lt;MeiZhiData&gt; getMeiZhi(@Path(&quot;page&quot;) int page);</div><div class="line"></div><div class="line">    @HTTP(method = &quot;GET&quot;, path = &quot;/api/data/福利/10/&#123;page&#125;&quot;, hasBody = false)</div><div class="line">    Observable&lt;MeiZhiData&gt; getMeiZhiData(@Path(&quot;page&quot;) int page);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><code>@Path(&quot;page&quot;)</code>对应<code>int page</code>的数据，它将替代<code>{page}</code>的内容，<code>Get(&quot;&quot;)</code>中的地址将与<code>baseUrl</code>的地址相连形成完整的请求地址。<br>然后通过Retrofit创建一个MeiZhiApi的代理对象，这样才能调用接口定义的方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MeiZhiApi meiZhiApi = retrofit.create(MeiZhiApi.class);</div></pre></td></tr></table></figure></p>
