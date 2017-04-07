@@ -370,24 +370,13 @@
       
         
           
-            <script>
-    if("123456"==prompt("请输入密码"))
-    {
-        alert("正确");
-    }
-    else
-    {
-        alert("错误");
-        location="https://byacht.github.io/"; #返回网站，请自定义
-    }
-</script>
-
-<h1 id="创建-Retrofit-实例"><a href="#创建-Retrofit-实例" class="headerlink" title="创建 Retrofit 实例"></a>创建 Retrofit 实例</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Retrofit retrofit = new Retrofit.Builder()</div><div class="line">                .baseUrl(&quot;http://gank.io/&quot;)</div><div class="line">                .addConverterFactory(GsonConverterFactory.create())</div><div class="line">                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())</div><div class="line">                .build();</div></pre></td></tr></table></figure>
-<p><code>baseUrl</code>即请求的地址</p>
+            <h1 id="创建-Retrofit-实例"><a href="#创建-Retrofit-实例" class="headerlink" title="创建 Retrofit 实例"></a>创建 Retrofit 实例</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Retrofit retrofit = new Retrofit.Builder()</div><div class="line">                .baseUrl(&quot;http://gank.io/&quot;)</div><div class="line">                .addConverterFactory(GsonConverterFactory.create())</div><div class="line">                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())</div><div class="line">                .build();</div></pre></td></tr></table></figure>
+<p><code>baseUrl</code>即请求的地址， <code>addConverterFactory(GsonConverterFactory.create())</code> 用于指定返回的参数数据类型，这里是支持 Gson 类型，<code>addCallAdapterFactory(RxJavaCallAdapterFactory.create())</code> 通过这个使其支持 RxJava。</p>
 <h1 id="定义接口"><a href="#定义接口" class="headerlink" title="定义接口"></a>定义接口</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public interface MeiZhiApi &#123;</div><div class="line"></div><div class="line">    @GET(&quot;/api/data/福利/10/&#123;page&#125;&quot;)</div><div class="line">    Call&lt;MeiZhiData&gt; getMeiZhi(@Path(&quot;page&quot;) int page);</div><div class="line"></div><div class="line">    @HTTP(method = &quot;GET&quot;, path = &quot;/api/data/福利/10/&#123;page&#125;&quot;, hasBody = false)</div><div class="line">    Observable&lt;MeiZhiData&gt; getMeiZhiData(@Path(&quot;page&quot;) int page);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><code>@Path(&quot;page&quot;)</code>对应<code>int page</code>的数据，它将替代<code>{page}</code>的内容，<code>Get(&quot;&quot;)</code>中的地址将与<code>baseUrl</code>的地址相连形成完整的请求地址。<br>然后通过Retrofit创建一个MeiZhiApi的代理对象，这样才能调用接口定义的方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MeiZhiApi meiZhiApi = retrofit.create(MeiZhiApi.class);</div></pre></td></tr></table></figure></p>
 <h1 id="接口调用"><a href="#接口调用" class="headerlink" title="接口调用"></a>接口调用</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">Call&lt;MeiZhiData&gt; call = meiZhiApi.getMeiZhi(mPage);</div><div class="line">call.enqueue(new Callback&lt;MeiZhiData&gt;() &#123;</div><div class="line">    @Override</div><div class="line">    public void onResponse(Call&lt;MeiZhiData&gt; call, Response&lt;MeiZhiData&gt; response) &#123;</div><div class="line">        Log.d(&quot;out&quot;, mGson.toJson(response.body()));</div><div class="line">        MeiZhiData meiZhiData = response.body();</div><div class="line">        mMeiZhis.addAll(meiZhiData.getResults());</div><div class="line">        for (int i = 0; i &lt; meiZhiData.getResults().size(); i++)&#123;</div><div class="line">            mPhotoHeight.add((int) (350 + Math.random() * 300));</div><div class="line">        &#125;</div><div class="line">        mAdapter.notifyDataSetChanged();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onFailure(Call&lt;MeiZhiData&gt; call, Throwable t) &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>通过调用<code>Call</code>的<code>enqueue</code>方法，在回调方法<code>onResponse</code>中返回请求的结果。在这里，通过请求得到每张图片的url，并传入Adapter中进行加载，最后效果图如下：<br><img src="http://upload-images.jianshu.io/upload_images/4798880-56fe4cce4079402f.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="meizhi.JPG"></p>
+<p>通过调用<code>Call</code>的<code>enqueue</code>方法，在回调方法<code>onResponse</code>中返回请求的结果。<code>enqueue</code>方法是异步请求，回调方法<code>callback</code> 则运行在主线程。若要同步请求网络则使用 <code>call.execute()</code>，如果想中断网络请求则可以使用 <code>call.cancel()</code> 。上面<code>Log.d(&quot;out&quot;, mGson.toJson(response.body()));</code> 打印出来的结果是<code>{&quot;results&quot;:[{&quot;createdAt&quot;:&quot;Feb 22, 2017 16:32:55&quot;,&quot;desc&quot;:&quot;2-22&quot;,&quot;imageHeight&quot;:0,&quot;imageWidth&quot;:0,&quot;publishedAt&quot;:&quot;Feb 22, 2017 19:43:57&quot;,&quot;type&quot;:&quot;福利&quot;,&quot;url&quot;:&quot;http://7xi8d6.com1.z0.glb.clouddn.com/2017-02-22-16789541_749566998525174_1194252851069583360_n.jpg&quot;,&quot;used&quot;:true,&quot;who&quot;:&quot;daimajia &quot;},</code> 一共有十组数据，这里仅展示一组。在这里，通过请求得到每张图片的url，并传入Adapter中进行加载，最后效果图如下：<br><img src="http://upload-images.jianshu.io/upload_images/4798880-56fe4cce4079402f.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="meizhi.JPG"></p>
+<h1 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h1><p>Retrofit 还有很多内容，待更…<br>最后，按照国际惯例，附上<a href="https://github.com/Byacht/PhotoWall" target="_blank" rel="external">源码</a>。</p>
 
           
         
@@ -454,7 +443,7 @@
               
                 
                 <a class="post-title-link" href="/2017/03/23/GuiLin/" itemprop="url">
-                  桂林
+                  桂林之旅
                 </a>
               
             
@@ -498,7 +487,7 @@
 
           
           
-             <span id="/2017/03/23/GuiLin/" class="leancloud_visitors" data-flag-title="桂林">
+             <span id="/2017/03/23/GuiLin/" class="leancloud_visitors" data-flag-title="桂林之旅">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -528,7 +517,7 @@
 
       
         
-          阅读本文，请输入密码
+          password
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/03/23/GuiLin/">
