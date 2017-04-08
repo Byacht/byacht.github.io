@@ -93,7 +93,7 @@
 <meta property="og:url" content="http://byacht.github.io/2017/02/26/Problem-in-Accounting/index.html">
 <meta property="og:site_name" content="Byacht">
 <meta property="og:description" content="获取不到Edittext内容问题代码如下：123view = LayoutInflater.from(AddCostActivity.this).inflate(R.layout.activity_add_cost,null);informationText = (EditText) view.findViewById(R.id.information_another_edittext);cost">
-<meta property="og:updated_time" content="2017-04-07T13:43:40.057Z">
+<meta property="og:updated_time" content="2017-04-08T08:04:30.121Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="项目中遇到的问题">
 <meta name="twitter:description" content="获取不到Edittext内容问题代码如下：123view = LayoutInflater.from(AddCostActivity.this).inflate(R.layout.activity_add_cost,null);informationText = (EditText) view.findViewById(R.id.information_another_edittext);cost">
@@ -366,6 +366,7 @@
       
         <h1 id="获取不到Edittext内容"><a href="#获取不到Edittext内容" class="headerlink" title="获取不到Edittext内容"></a>获取不到Edittext内容</h1><p>问题代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">view = LayoutInflater.from(AddCostActivity.<span class="keyword">this</span>).inflate(R.layout.activity_add_cost,<span class="keyword">null</span>);</div><div class="line">informationText = (EditText) view.findViewById(R.id.information_another_edittext);</div><div class="line">costText = (FormEditText) view.findViewById(R.id.cost_another_edittext);</div></pre></td></tr></table></figure></p>
 <p>改正代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">informationText = (EditText) findViewById(R.id.information_another_edittext);</div><div class="line">costText = (FormEditText) findViewById(R.id.cost_another_edittext);</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p>原因不明</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> mMonth = <span class="number">2</span>;</div></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mTextView.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">                <span class="meta">@Override</span></div><div class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">                    Log.d(<span class="string">"out"</span>, <span class="string">"textview:Jan"</span>);</div><div class="line">                    mMonth = <span class="number">1</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;);</div></pre></td></tr></table></figure>
@@ -379,6 +380,7 @@
 <p>将item的布局文件的高度设置成wrap_content</p>
 <p>#调用notifyDataSetChanged后RecylerView不更新</p>
 <p>传给adapter的数据（list）必须唯一，即List为同一地址</p>
+<!--more-->
 
       
     </div>

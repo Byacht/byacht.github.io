@@ -97,7 +97,7 @@ GreenDao的配置12345678910111213141516171819// In your root build.gradle file:
 <meta property="og:description" content="原创文章，转载请注明出处
 
 GreenDao的配置12345678910111213141516171819// In your root build.gradle file:buildscript &amp;#123;    repositories &amp;#123;        jcenter()        mavenCentral() &amp;lt;-- add repository    &amp;#125">
-<meta property="og:updated_time" content="2017-04-07T13:43:02.616Z">
+<meta property="og:updated_time" content="2017-04-08T08:05:18.845Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GreenDao基本用法及其query方法详解">
 <meta name="twitter:description" content="原创文章，转载请注明出处
@@ -374,6 +374,7 @@ GreenDao的配置12345678910111213141516171819// In your root build.gradle file:
 <p>原创文章，转载请注明出处</p>
 </blockquote>
 <h1 id="GreenDao的配置"><a href="#GreenDao的配置" class="headerlink" title="GreenDao的配置"></a>GreenDao的配置</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// In your root build.gradle file:</span></div><div class="line">buildscript &#123;</div><div class="line">    repositories &#123;</div><div class="line">        jcenter()</div><div class="line">        mavenCentral() &lt;-- add repository</div><div class="line">    &#125;</div><div class="line">    dependencies &#123;</div><div class="line">        classpath <span class="string">'com.android.tools.build:gradle:2.3.0'</span></div><div class="line">        classpath <span class="string">'org.greenrobot:greendao-gradle-plugin:3.2.1'</span> &lt;-- add plugin</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">// In your app projects build.gradle file:</span></div><div class="line">apply plugin: <span class="string">'com.android.application'</span></div><div class="line">apply plugin: <span class="string">'org.greenrobot.greendao'</span> &lt;-- apply plugin</div><div class="line"> </div><div class="line">dependencies &#123;</div><div class="line">    compile <span class="string">'org.greenrobot:greendao:3.2.0'</span> &lt;-- add library</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>其次，在app projects build.gradle 中添加如下语句：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">greendao &#123;</div><div class="line">    schemaVersion <span class="number">1</span></div><div class="line">    daoPackage <span class="string">'com.byacht.greendaotest.greendao.gen'</span></div><div class="line">    targetGenDir <span class="string">'src/main/java'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>其中，<code>schemaVersion</code> 是数据库的版本，更新数据库时使用，<code>daoPackage</code> 是gradle插件为我们生成数据库相关文件的包名， <code>targetGenDir</code> 是生成文件所在的位置。</p>
@@ -401,6 +402,7 @@ GreenDao的配置12345678910111213141516171819// In your root build.gradle file:
 <h2 id="raw-query"><a href="#raw-query" class="headerlink" title="raw query"></a>raw query</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Query&lt;User&gt; query = userDao.queryBuilder().where(</div><div class="line">  <span class="keyword">new</span> StringCondition(<span class="string">"_ID IN "</span> +</div><div class="line">    <span class="string">"(SELECT USER_ID FROM USER_MESSAGE WHERE READ_FLAG = 0)"</span>)</div><div class="line">).build();</div></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Query&lt;User&gt; query = userDao.queryRawCreate(</div><div class="line">  <span class="string">", GROUP G WHERE G.NAME=? AND T.GROUP_ID=G._ID"</span>, <span class="string">"admin"</span></div><div class="line">);</div></pre></td></tr></table></figure>
 <p>更为具体的请参见<a href="http://greenrobot.org/greendao/documentation/queries/" target="_blank" rel="external">官网</a></p>
+<!--more-->
 
       
     </div>
