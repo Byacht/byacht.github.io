@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="-Android," />
+  <meta name="keywords" content="Android," />
 
 
 
@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="Byacht">
 <meta property="og:description" content="创建 Retrofit 实例12345Retrofit retrofit = new Retrofit.Builder()                .baseUrl(&quot;http://gank.io/&quot;)                .addConverterFactory(GsonConverterFactory.create())                .addCallAdapt">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4798880-56fe4cce4079402f.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-04-08T08:02:49.747Z">
+<meta property="og:updated_time" content="2017-04-09T02:23:12.555Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Retrofit2 用法总结">
 <meta name="twitter:description" content="创建 Retrofit 实例12345Retrofit retrofit = new Retrofit.Builder()                .baseUrl(&quot;http://gank.io/&quot;)                .addConverterFactory(GsonConverterFactory.create())                .addCallAdapt">
@@ -370,10 +370,12 @@
 <p><code>baseUrl</code>即请求的地址， <code>addConverterFactory(GsonConverterFactory.create())</code> 用于指定返回的参数数据类型，这里是支持 Gson 类型，<code>addCallAdapterFactory(RxJavaCallAdapterFactory.create())</code> 通过这个使其支持 RxJava。</p>
 <a id="more"></a>
 <h1 id="定义接口"><a href="#定义接口" class="headerlink" title="定义接口"></a>定义接口</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MeiZhiApi</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@GET</span>(<span class="string">"/api/data/福利/10/&#123;page&#125;"</span>)</div><div class="line">    <span class="function">Call&lt;MeiZhiData&gt; <span class="title">getMeiZhi</span><span class="params">(@Path(<span class="string">"page"</span>)</span> <span class="keyword">int</span> page)</span>;</div><div class="line"></div><div class="line">    <span class="meta">@HTTP</span>(method = <span class="string">"GET"</span>, path = <span class="string">"/api/data/福利/10/&#123;page&#125;"</span>, hasBody = <span class="keyword">false</span>)</div><div class="line">    <span class="function">Observable&lt;MeiZhiData&gt; <span class="title">getMeiZhiData</span><span class="params">(@Path(<span class="string">"page"</span>)</span> <span class="keyword">int</span> page)</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><code>@Path(&quot;page&quot;)</code>对应<code>int page</code>的数据，它将替代<code>{page}</code>的内容，<code>Get(&quot;&quot;)</code>中的地址将与<code>baseUrl</code>的地址相连形成完整的请求地址。<br>然后通过Retrofit创建一个MeiZhiApi的代理对象，这样才能调用接口定义的方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MeiZhiApi meiZhiApi = retrofit.create(MeiZhiApi.class);</div></pre></td></tr></table></figure></p>
+<p><code>@Path(&quot;page&quot;)</code>对应<code>int page</code>的数据，它将替代<code>{page}</code>的内容，<code>Get(&quot;&quot;)</code>中的地址将与<code>baseUrl</code>的地址相连形成完整的请求地址。<br>请求方法除了@GET ，还有@POST、@PUT、@DELETE、@HEAD、@OPTIONS、@PATCH、@HTTP,其中@HTTP 可以用来替换其余的7个，使用方法如上，其中<code>hasBody</code> 表示是否有请求体。</p>
+<p>接口定义后，通过Retrofit创建一个MeiZhiApi的代理对象，这样才能调用接口定义的方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MeiZhiApi meiZhiApi = retrofit.create(MeiZhiApi.class);</div></pre></td></tr></table></figure></p>
 <h1 id="接口调用"><a href="#接口调用" class="headerlink" title="接口调用"></a>接口调用</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">Call&lt;MeiZhiData&gt; call = meiZhiApi.getMeiZhi(mPage);</div><div class="line">call.enqueue(<span class="keyword">new</span> Callback&lt;MeiZhiData&gt;() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Call&lt;MeiZhiData&gt; call, Response&lt;MeiZhiData&gt; response)</span> </span>&#123;</div><div class="line">        Log.d(<span class="string">"out"</span>, mGson.toJson(response.body()));</div><div class="line">        MeiZhiData meiZhiData = response.body();</div><div class="line">        mMeiZhis.addAll(meiZhiData.getResults());</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; meiZhiData.getResults().size(); i++)&#123;</div><div class="line">            mPhotoHeight.add((<span class="keyword">int</span>) (<span class="number">350</span> + Math.random() * <span class="number">300</span>));</div><div class="line">        &#125;</div><div class="line">        mAdapter.notifyDataSetChanged();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Call&lt;MeiZhiData&gt; call, Throwable t)</span> </span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p>通过调用<code>Call</code>的<code>enqueue</code>方法，在回调方法<code>onResponse</code>中返回请求的结果。<code>enqueue</code>方法是异步请求，回调方法<code>callback</code> 则运行在主线程。若要同步请求网络则使用 <code>call.execute()</code>，如果想中断网络请求则可以使用 <code>call.cancel()</code> 。上面<code>Log.d(&quot;out&quot;, mGson.toJson(response.body()))</code> 打印出来的结果是<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;<span class="string">"results"</span>:[&#123;<span class="string">"createdAt"</span>:<span class="string">"Feb 22, 2017 16:32:55"</span>,<span class="string">"desc"</span>:<span class="string">"2-22"</span>,<span class="string">"imageHeight"</span>:<span class="number">0</span>,<span class="string">"imageWidth"</span>:<span class="number">0</span>,<span class="string">"publishedAt"</span>:<span class="string">"Feb 22, 2017 19:43:57"</span>,<span class="string">"type"</span>:<span class="string">"福利"</span>,<span class="string">"url"</span>:<span class="string">"http://7xi8d6.com1.z0.glb.clouddn.com/2017-02-22-16789541_749566998525174_1194252851069583360_n.jpg"</span>,<span class="string">"used"</span>:<span class="keyword">true</span>,<span class="string">"who"</span>:<span class="string">"daimajia "</span>&#125;,</div></pre></td></tr></table></figure></p>
 <p>一共有十组数据，这里仅展示一组。在这里，通过请求得到每张图片的url，并传入Adapter中进行加载，最后效果图如下：<br><img src="http://upload-images.jianshu.io/upload_images/4798880-56fe4cce4079402f.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="meizhi.JPG"></p>
+<h1 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h1><p>Retrofit 包含了大量注解的使用，能够满足各种各样的网络请求，具体的使用方法可参考<a href="http://blog.csdn.net/itachi85/article/details/53007262" target="_blank" rel="external">这篇文章</a>，写得很详细。</p>
 <h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>Retrofit 还有很多内容，待更…<br>最后，按照国际惯例，附上<a href="https://github.com/Byacht/PhotoWall" target="_blank" rel="external">源码</a>。</p>
 <!--more-->
       
@@ -398,7 +400,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Android/" rel="tag"># -Android</a>
+            <a href="/tags/Android/" rel="tag"># Android</a>
           
         </div>
       
@@ -513,7 +515,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -559,7 +561,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#创建-Retrofit-实例"><span class="nav-number">1.</span> <span class="nav-text">创建 Retrofit 实例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义接口"><span class="nav-number">2.</span> <span class="nav-text">定义接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接口调用"><span class="nav-number">3.</span> <span class="nav-text">接口调用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#创建-Retrofit-实例"><span class="nav-number">1.</span> <span class="nav-text">创建 Retrofit 实例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义接口"><span class="nav-number">2.</span> <span class="nav-text">定义接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接口调用"><span class="nav-number">3.</span> <span class="nav-text">接口调用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注解"><span class="nav-number">4.</span> <span class="nav-text">注解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number">5.</span> <span class="nav-text">结语</span></a></li></ol></div>
             
 
           </div>
