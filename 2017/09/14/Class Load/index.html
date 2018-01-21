@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Java," />
 
 
 
@@ -87,34 +87,19 @@
 
 
 
-<meta name="description" content="tags: JavaJava内存区域与内存溢出运行时数据区域 Java 虚拟机在执行 Java 程序过程中会把它所管理的内存划分为若干个不同的数据区域。
-
-程序计数器
-可看作当前线程所执行的字节码的行号指示器，通过改变计数器的值来选取下一条需要执行的字节码指令。每个线程有一个独立的计数器，各线程互不影响。此内存区域是虚拟机唯一一个没有规定OOM的区域。
-
-Java虚拟机栈
-线程私有。描述 Java">
+<meta name="description" content="类加载机制类加载的生命周期：加载，验证，准备，解析，初始化，使用，卸载。其中，验证，准备，解析统称为链接。加载，验证，准备，初始化，卸载的顺序是确定的，但并非按顺序依次执行，而是按顺序依次开始，而后通常是交叉进行。解析阶段在某些情况下可在初始化之后再开始，这是为了支持 Java 运行时绑定的特性。
+类加载的时机虚拟机并没有强制约束何时进行加载过程，但对于初始化过程，虚拟机严格规定了有且只有五种情况">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java 内存区域与内存溢出">
-<meta property="og:url" content="http://byacht.github.io/2017/08/26/Java Memery/index.html">
+<meta property="og:title" content="Handler工作原理分析">
+<meta property="og:url" content="http://byacht.github.io/2017/09/14/Class Load/index.html">
 <meta property="og:site_name" content="Byacht">
-<meta property="og:description" content="tags: JavaJava内存区域与内存溢出运行时数据区域 Java 虚拟机在执行 Java 程序过程中会把它所管理的内存划分为若干个不同的数据区域。
-
-程序计数器
-可看作当前线程所执行的字节码的行号指示器，通过改变计数器的值来选取下一条需要执行的字节码指令。每个线程有一个独立的计数器，各线程互不影响。此内存区域是虚拟机唯一一个没有规定OOM的区域。
-
-Java虚拟机栈
-线程私有。描述 Java">
-<meta property="og:updated_time" content="2018-01-21T03:45:02.338Z">
+<meta property="og:description" content="类加载机制类加载的生命周期：加载，验证，准备，解析，初始化，使用，卸载。其中，验证，准备，解析统称为链接。加载，验证，准备，初始化，卸载的顺序是确定的，但并非按顺序依次执行，而是按顺序依次开始，而后通常是交叉进行。解析阶段在某些情况下可在初始化之后再开始，这是为了支持 Java 运行时绑定的特性。
+类加载的时机虚拟机并没有强制约束何时进行加载过程，但对于初始化过程，虚拟机严格规定了有且只有五种情况">
+<meta property="og:updated_time" content="2018-01-21T03:43:51.935Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java 内存区域与内存溢出">
-<meta name="twitter:description" content="tags: JavaJava内存区域与内存溢出运行时数据区域 Java 虚拟机在执行 Java 程序过程中会把它所管理的内存划分为若干个不同的数据区域。
-
-程序计数器
-可看作当前线程所执行的字节码的行号指示器，通过改变计数器的值来选取下一条需要执行的字节码指令。每个线程有一个独立的计数器，各线程互不影响。此内存区域是虚拟机唯一一个没有规定OOM的区域。
-
-Java虚拟机栈
-线程私有。描述 Java">
+<meta name="twitter:title" content="Handler工作原理分析">
+<meta name="twitter:description" content="类加载机制类加载的生命周期：加载，验证，准备，解析，初始化，使用，卸载。其中，验证，准备，解析统称为链接。加载，验证，准备，初始化，卸载的顺序是确定的，但并非按顺序依次执行，而是按顺序依次开始，而后通常是交叉进行。解析阶段在某些情况下可在初始化之后再开始，这是为了支持 Java 运行时绑定的特性。
+类加载的时机虚拟机并没有强制约束何时进行加载过程，但对于初始化过程，虚拟机严格规定了有且只有五种情况">
 
 
 
@@ -153,13 +138,13 @@ Java虚拟机栈
 
 
 
-  <link rel="canonical" href="http://byacht.github.io/2017/08/26/Java Memery/"/>
+  <link rel="canonical" href="http://byacht.github.io/2017/09/14/Class Load/"/>
 
 
 
 
 
-  <title> Java 内存区域与内存溢出 | Byacht </title>
+  <title> Handler工作原理分析 | Byacht </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-hk">
@@ -286,7 +271,7 @@ Java虚拟机栈
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://byacht.github.io/2017/08/26/Java Memery/">
+  <link itemprop="mainEntityOfPage" href="http://byacht.github.io/2017/09/14/Class Load/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Byacht">
@@ -310,7 +295,7 @@ Java虚拟机栈
             
             
               
-                Java 内存区域与内存溢出
+                Handler工作原理分析
               
             
           </h1>
@@ -325,8 +310,8 @@ Java虚拟机栈
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-26T16:42:40+08:00">
-                2017-08-26
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-14T00:21:25+08:00">
+                2017-09-14
               </time>
             
 
@@ -344,8 +329,8 @@ Java虚拟机栈
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/08/26/Java Memery/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/08/26/Java Memery/" itemprop="commentCount"></span>
+                <a href="/2017/09/14/Class Load/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/14/Class Load/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -353,7 +338,7 @@ Java虚拟机栈
 
           
           
-             <span id="/2017/08/26/Java Memery/" class="leancloud_visitors" data-flag-title="Java 内存区域与内存溢出">
+             <span id="/2017/09/14/Class Load/" class="leancloud_visitors" data-flag-title="Handler工作原理分析">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -382,45 +367,43 @@ Java虚拟机栈
       
 
       
-        <h2 id="tags-Java"><a href="#tags-Java" class="headerlink" title="tags: Java"></a>tags: Java</h2><h1 id="Java内存区域与内存溢出"><a href="#Java内存区域与内存溢出" class="headerlink" title="Java内存区域与内存溢出"></a>Java内存区域与内存溢出</h1><h2 id="运行时数据区域"><a href="#运行时数据区域" class="headerlink" title="运行时数据区域"></a>运行时数据区域</h2><p> Java 虚拟机在执行 Java 程序过程中会把它所管理的内存划分为若干个不同的数据区域。</p>
+        <h1 id="类加载机制"><a href="#类加载机制" class="headerlink" title="类加载机制"></a>类加载机制</h1><p>类加载的生命周期：加载，验证，准备，解析，初始化，使用，卸载。其中，验证，准备，解析统称为链接。加载，验证，准备，初始化，卸载的顺序是确定的，但并非按顺序依次执行，而是按顺序依次开始，而后通常是交叉进行。解析阶段在某些情况下可在初始化之后再开始，这是为了支持 Java 运行时绑定的特性。</p>
+<h2 id="类加载的时机"><a href="#类加载的时机" class="headerlink" title="类加载的时机"></a>类加载的时机</h2><p>虚拟机并没有强制约束何时进行加载过程，但对于初始化过程，虚拟机严格规定了有且只有五种情况必须对类进行初始化：</p>
 <ul>
-<li><p><strong>程序计数器</strong></p>
-<p>可看作当前线程所执行的字节码的行号指示器，通过改变计数器的值来选取下一条需要执行的字节码指令。每个线程有一个独立的计数器，各线程互不影响。此内存区域是虚拟机唯一一个没有规定OOM的区域。</p>
-</li>
-<li><p><strong>Java虚拟机栈</strong></p>
-<p>线程私有。描述 Java 方法执行的内存模型。方法执行的同时会创建一个栈帧用于存储局部变量表，操作数栈，动态链接，方法出口等信息。局部变量表存放了编译期可知的各种基本数据类型，对象引用类型和返回地址类型，在方法运行期不会改变局部变量表的大小。若线程请求的栈深度大于虚拟机所允许的深度，将抛出 StackOverflowError 异常，若虚拟机栈可动态扩展，且扩展时无法申请到足够内存，就会抛出 OOM。</p>
-</li>
-<li><p><strong>本地方法栈</strong></p>
-<p>与虚拟机栈类似。区别为虚拟机栈为虚拟机执行Java 方法服务，而本地方法栈为虚拟机使用到的 Native 方法服务。</p>
-</li>
-<li><p><strong>Java 堆</strong></p>
-<p>存放对象实例。线程共享。</p>
-</li>
-<li><p><strong>方法区</strong></p>
-<p>线程共享。用于存储已被虚拟机加载的类信息，常量，静态变量，即时编译期编译后的代码等数据。</p>
-</li>
-<li><p><strong>运行时常量池</strong></p>
-<p>方法区的一部分。用于存放编译期生成的各种字面量和符号引用。</p>
-</li>
+<li>遇到 new, getstatic, putstatic, invokestatic 指令，若类没有进行过初始化，则需先初始化。最常见的 Java 代码场景：使用 new 关键字实例化对象，读取或设置一个类的静态字段，调用一个类的静态方法的时候</li>
+<li>对类进行反射调用的时候，若没初始化，则初始化</li>
+<li>当初始化一个类的时候，其父类还没初始化，则需先初始化其父类</li>
+<li>虚拟机启动时，用户需指定一个要执行的主类，虚拟机会先初始化这个主类</li>
+<li>如果一个 java.lang.invoke.MethodHandle 实例最后的解析结果 REF_getStatic, REF_putStatic, REF_invokeStatic 的方法句柄，并且这个方法句柄所对应的类没有初始化，则先初始化</li>
+</ul>
+<p>以上五种场景称为对一个类的主动引用，其他引用类的方式都不会初始化，称为被动引用。例如：</p>
+<ul>
+<li>子类引用父类的静态字段，不会导致子类初始化。</li>
+<li>常量在编译阶段会存入调用类的常量池中，本质上并没有直接引用到定义常量的类，因此不会触发类的初始化。</li>
+<li>通过数组定义来引用类，不会触发类的初始化。如：<code>SuperClass[] sca = new SuperClass[10]</code></li>
 </ul>
 <a id="more"></a>
-<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><h3 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h3><p>先进行类加载检查，通过后，虚拟机将为新生对象分配内存。对象所需内存大小在类加载完成后便可完全确定，为其分配空间等同于把一块确定大小的内存从Java堆中划分出来。有两种分配方式：<strong>指针碰撞</strong>和<strong>空闲列表</strong>。</p>
-<p>指针碰撞是把指针向空闲空间挪动一段与对象大小相等的距离，要求堆中的内存绝对规整。使用空闲列表时，虚拟机必须维护一个列表，记录哪些内存块可用，分配的时候从列表中找到一块足够大的空间划分给对象实例，并更新列表上的记录。</p>
-<p>分配的时候要考虑线程同步问题，有两种方案：对分配内存空间的动作进行同步处理，另一种是把内存分配的动作按照线程划分在不同空间中进行，即每个线程在堆中预先分配一小块内存，此种方式称为本地线程分配缓冲。</p>
-<p>内存分配完成后，虚拟机将分配到的内存空间初始化为零值，保证了对象的实例字段在不赋初始值就直接使用。接下来，虚拟机对对象进行必要的设置，例如此对象是哪个类的实例，如何找到类的元数据信息等，这些信息存放在对象头中。最后将执行 init 方法。</p>
-<h3 id="对象的内存布局"><a href="#对象的内存布局" class="headerlink" title="对象的内存布局"></a>对象的内存布局</h3><p>对象在内存中的布局分为三个区域：对象头，实例数据，对齐填充。</p>
-<ul>
-<li><p><strong>对象头</strong></p>
-<p>包括两部分信息：第一部分用于存储对象自身的运行数据，如哈希码，锁状态标志等。另一部分是类型指针，即对象指向它的类元数据的指针。</p>
+<h2 id="类加载过程"><a href="#类加载过程" class="headerlink" title="类加载过程"></a>类加载过程</h2><ul>
+<li><p><strong>加载</strong></p>
+<p>加载过程需完成三件事：</p>
+<ol>
+<li>通过一个类的全限定名来获取定义此类的二进制字节流</li>
+<li>将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构</li>
+<li>在内存中生成一个代表这个类的 java.lang.Class 对象，作为方法区这个类的各种数据的访问入口</li>
+</ol>
 </li>
-<li><p><strong>实例数据</strong></p>
-<p>对象真正存储的有效信息。</p>
+<li><p><strong>验证</strong></p>
+<p>确保 Class 文件的字节流中包含的信息符合当前虚拟机的要求，并且不会危害虚拟机自身的安全。Java 语言对于一些不安全的行为，如访问数组边界以外的数据，将拒绝编译。但 Class 文件并非仅能来自 Java 源码，它可以使用任何途径产生。因此，需要验证这一过程。</p>
 </li>
-<li><p><strong>对齐填充</strong></p>
-<p>起占位符作用。</p>
+<li><p><strong>准备</strong></p>
+<p>正式为类变量分配内存并设置类变量的初始值。这里并不包括实例变量；其次，这里所说的初始值一般是指零值。如 <code>public static int value = 123;</code> ，那么准备阶段过后 <code>value</code> 的值应该是 0。将其赋值为 123 是在初始化阶段完成。也存在特殊情况：如果类字段的字段属性表中存在 ConstantValue 属性，那么在准备阶段就会初始化为所指定的值，如 <code>public static final int value = 123</code>。</p>
+</li>
+<li><p><strong>解析</strong></p>
+</li>
+<li><p><strong>初始化</strong></p>
 </li>
 </ul>
-<h3 id="对象的访问定位"><a href="#对象的访问定位" class="headerlink" title="对象的访问定位"></a>对象的访问定位</h3><p>访问方式：句柄或直接指针。</p>
+<h2 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h2><p>比较两个类是否相等，需要这两个类是由<strong>同一个类加载器加载</strong>这一前提条件下。</p>
 <!--more-->
       
     </div>
@@ -442,6 +425,12 @@ Java虚拟机栈
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
 
       
         
@@ -451,8 +440,8 @@ Java虚拟机栈
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/25/oom/" rel="next" title="Android 中常见的内存泄漏">
-                <i class="fa fa-chevron-left"></i> Android 中常见的内存泄漏
+              <a href="/2017/09/09/JMM and Thread/" rel="next" title="JMM 和 Thread">
+                <i class="fa fa-chevron-left"></i> JMM 和 Thread
               </a>
             
           </div>
@@ -460,10 +449,6 @@ Java虚拟机栈
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/29/GC/" rel="prev" title="垃圾收集器与内存分配策略">
-                垃圾收集器与内存分配策略 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -489,8 +474,8 @@ Java虚拟机栈
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/08/26/Java Memery/"
-           data-title="Java 内存区域与内存溢出" data-url="http://byacht.github.io/2017/08/26/Java Memery/">
+      <div class="ds-thread" data-thread-key="2017/09/14/Class Load/"
+           data-title="Handler工作原理分析" data-url="http://byacht.github.io/2017/09/14/Class Load/">
       </div>
     
   </div>
@@ -603,7 +588,7 @@ Java虚拟机栈
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tags-Java"><span class="nav-number">1.</span> <span class="nav-text">tags: Java</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java内存区域与内存溢出"><span class="nav-number"></span> <span class="nav-text">Java内存区域与内存溢出</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#运行时数据区域"><span class="nav-number">1.</span> <span class="nav-text">运行时数据区域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象"><span class="nav-number">2.</span> <span class="nav-text">对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的创建"><span class="nav-number">2.1.</span> <span class="nav-text">对象的创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的内存布局"><span class="nav-number">2.2.</span> <span class="nav-text">对象的内存布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的访问定位"><span class="nav-number">2.3.</span> <span class="nav-text">对象的访问定位</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#类加载机制"><span class="nav-number">1.</span> <span class="nav-text">类加载机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#类加载的时机"><span class="nav-number">1.1.</span> <span class="nav-text">类加载的时机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类加载过程"><span class="nav-number">1.2.</span> <span class="nav-text">类加载过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类加载器"><span class="nav-number">1.3.</span> <span class="nav-text">类加载器</span></a></li></ol></li></ol></div>
             
 
           </div>

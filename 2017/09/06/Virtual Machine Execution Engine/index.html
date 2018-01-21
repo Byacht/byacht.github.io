@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Java," />
 
 
 
@@ -87,34 +87,19 @@
 
 
 
-<meta name="description" content="tags: JavaJava内存区域与内存溢出运行时数据区域 Java 虚拟机在执行 Java 程序过程中会把它所管理的内存划分为若干个不同的数据区域。
-
-程序计数器
-可看作当前线程所执行的字节码的行号指示器，通过改变计数器的值来选取下一条需要执行的字节码指令。每个线程有一个独立的计数器，各线程互不影响。此内存区域是虚拟机唯一一个没有规定OOM的区域。
-
-Java虚拟机栈
-线程私有。描述 Java">
+<meta name="description" content="虚拟机字节码执行引擎虚拟机是一个相对于 ”物理机“ 的概念，这两种均有执行代码的能力，其区别是物理机的执行引擎直接建立在处理器、硬件、指令集和操作系统层面上，而虚拟机的执行引擎是自己实现的，因此可以自行制定指令集与执行引擎的结构体系，执行不被硬件直接支持的指令集格式。
+运行时栈帧结构栈帧是用于支持虚拟机进行方法调用和执行的数据结构，是虚拟机运行时数据区的虚拟机栈的栈元素。每个方法从调用到完成的过程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java 内存区域与内存溢出">
-<meta property="og:url" content="http://byacht.github.io/2017/08/26/Java Memery/index.html">
+<meta property="og:title" content="虚拟机字节码执行引擎">
+<meta property="og:url" content="http://byacht.github.io/2017/09/06/Virtual Machine Execution Engine/index.html">
 <meta property="og:site_name" content="Byacht">
-<meta property="og:description" content="tags: JavaJava内存区域与内存溢出运行时数据区域 Java 虚拟机在执行 Java 程序过程中会把它所管理的内存划分为若干个不同的数据区域。
-
-程序计数器
-可看作当前线程所执行的字节码的行号指示器，通过改变计数器的值来选取下一条需要执行的字节码指令。每个线程有一个独立的计数器，各线程互不影响。此内存区域是虚拟机唯一一个没有规定OOM的区域。
-
-Java虚拟机栈
-线程私有。描述 Java">
-<meta property="og:updated_time" content="2018-01-21T03:45:02.338Z">
+<meta property="og:description" content="虚拟机字节码执行引擎虚拟机是一个相对于 ”物理机“ 的概念，这两种均有执行代码的能力，其区别是物理机的执行引擎直接建立在处理器、硬件、指令集和操作系统层面上，而虚拟机的执行引擎是自己实现的，因此可以自行制定指令集与执行引擎的结构体系，执行不被硬件直接支持的指令集格式。
+运行时栈帧结构栈帧是用于支持虚拟机进行方法调用和执行的数据结构，是虚拟机运行时数据区的虚拟机栈的栈元素。每个方法从调用到完成的过程">
+<meta property="og:updated_time" content="2018-01-21T03:45:45.659Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java 内存区域与内存溢出">
-<meta name="twitter:description" content="tags: JavaJava内存区域与内存溢出运行时数据区域 Java 虚拟机在执行 Java 程序过程中会把它所管理的内存划分为若干个不同的数据区域。
-
-程序计数器
-可看作当前线程所执行的字节码的行号指示器，通过改变计数器的值来选取下一条需要执行的字节码指令。每个线程有一个独立的计数器，各线程互不影响。此内存区域是虚拟机唯一一个没有规定OOM的区域。
-
-Java虚拟机栈
-线程私有。描述 Java">
+<meta name="twitter:title" content="虚拟机字节码执行引擎">
+<meta name="twitter:description" content="虚拟机字节码执行引擎虚拟机是一个相对于 ”物理机“ 的概念，这两种均有执行代码的能力，其区别是物理机的执行引擎直接建立在处理器、硬件、指令集和操作系统层面上，而虚拟机的执行引擎是自己实现的，因此可以自行制定指令集与执行引擎的结构体系，执行不被硬件直接支持的指令集格式。
+运行时栈帧结构栈帧是用于支持虚拟机进行方法调用和执行的数据结构，是虚拟机运行时数据区的虚拟机栈的栈元素。每个方法从调用到完成的过程">
 
 
 
@@ -153,13 +138,13 @@ Java虚拟机栈
 
 
 
-  <link rel="canonical" href="http://byacht.github.io/2017/08/26/Java Memery/"/>
+  <link rel="canonical" href="http://byacht.github.io/2017/09/06/Virtual Machine Execution Engine/"/>
 
 
 
 
 
-  <title> Java 内存区域与内存溢出 | Byacht </title>
+  <title> 虚拟机字节码执行引擎 | Byacht </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-hk">
@@ -286,7 +271,7 @@ Java虚拟机栈
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://byacht.github.io/2017/08/26/Java Memery/">
+  <link itemprop="mainEntityOfPage" href="http://byacht.github.io/2017/09/06/Virtual Machine Execution Engine/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Byacht">
@@ -310,7 +295,7 @@ Java虚拟机栈
             
             
               
-                Java 内存区域与内存溢出
+                虚拟机字节码执行引擎
               
             
           </h1>
@@ -325,8 +310,8 @@ Java虚拟机栈
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-26T16:42:40+08:00">
-                2017-08-26
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-06T16:59:34+08:00">
+                2017-09-06
               </time>
             
 
@@ -344,8 +329,8 @@ Java虚拟机栈
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/08/26/Java Memery/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/08/26/Java Memery/" itemprop="commentCount"></span>
+                <a href="/2017/09/06/Virtual Machine Execution Engine/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/06/Virtual Machine Execution Engine/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -353,7 +338,7 @@ Java虚拟机栈
 
           
           
-             <span id="/2017/08/26/Java Memery/" class="leancloud_visitors" data-flag-title="Java 内存区域与内存溢出">
+             <span id="/2017/09/06/Virtual Machine Execution Engine/" class="leancloud_visitors" data-flag-title="虚拟机字节码执行引擎">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -382,46 +367,75 @@ Java虚拟机栈
       
 
       
-        <h2 id="tags-Java"><a href="#tags-Java" class="headerlink" title="tags: Java"></a>tags: Java</h2><h1 id="Java内存区域与内存溢出"><a href="#Java内存区域与内存溢出" class="headerlink" title="Java内存区域与内存溢出"></a>Java内存区域与内存溢出</h1><h2 id="运行时数据区域"><a href="#运行时数据区域" class="headerlink" title="运行时数据区域"></a>运行时数据区域</h2><p> Java 虚拟机在执行 Java 程序过程中会把它所管理的内存划分为若干个不同的数据区域。</p>
+        <h1 id="虚拟机字节码执行引擎"><a href="#虚拟机字节码执行引擎" class="headerlink" title="虚拟机字节码执行引擎"></a>虚拟机字节码执行引擎</h1><p>虚拟机是一个相对于 ”物理机“ 的概念，这两种均有执行代码的能力，其区别是物理机的执行引擎直接建立在处理器、硬件、指令集和操作系统层面上，而虚拟机的执行引擎是自己实现的，因此可以自行制定指令集与执行引擎的结构体系，执行不被硬件直接支持的指令集格式。</p>
+<h2 id="运行时栈帧结构"><a href="#运行时栈帧结构" class="headerlink" title="运行时栈帧结构"></a>运行时栈帧结构</h2><p>栈帧是用于支持虚拟机进行方法调用和执行的数据结构，是虚拟机运行时数据区的虚拟机栈的栈元素。每个方法从调用到完成的过程都对应着一个栈帧在虚拟机栈从入栈到出栈的过程。</p>
+<p>每一个栈帧包括了局部变量表、操作数栈、动态连接、方法返回地址和附加信息。在编译期，栈帧需多大的局部变量表、多深的操作数栈已完全确定，并且写入到方法表的 Code 属性中。</p>
+<p>在活动线程中，只有位于栈顶的栈帧才是有效的。</p>
 <ul>
-<li><p><strong>程序计数器</strong></p>
-<p>可看作当前线程所执行的字节码的行号指示器，通过改变计数器的值来选取下一条需要执行的字节码指令。每个线程有一个独立的计数器，各线程互不影响。此内存区域是虚拟机唯一一个没有规定OOM的区域。</p>
+<li><p><strong>局部变量表</strong></p>
+<p>存放方法参数和方法内部定义的局部变量，以变量槽（Variable Slot）为最小单位，存放一个 boolean, byte, char, short, int, float, reference, returnAddress 类型的数据。一个局部变量定义了但没赋初始值不能使用。局部变量表中的 Slot 是可以复用的。</p>
 </li>
-<li><p><strong>Java虚拟机栈</strong></p>
-<p>线程私有。描述 Java 方法执行的内存模型。方法执行的同时会创建一个栈帧用于存储局部变量表，操作数栈，动态链接，方法出口等信息。局部变量表存放了编译期可知的各种基本数据类型，对象引用类型和返回地址类型，在方法运行期不会改变局部变量表的大小。若线程请求的栈深度大于虚拟机所允许的深度，将抛出 StackOverflowError 异常，若虚拟机栈可动态扩展，且扩展时无法申请到足够内存，就会抛出 OOM。</p>
+<li><p>操作数栈</p>
+<p>方法执行过程中，会有各种指令往操作数栈写入和读取内容。</p>
 </li>
-<li><p><strong>本地方法栈</strong></p>
-<p>与虚拟机栈类似。区别为虚拟机栈为虚拟机执行Java 方法服务，而本地方法栈为虚拟机使用到的 Native 方法服务。</p>
+<li><p>动态连接</p>
+<p>每个栈帧都包含一个指向运行时常量池中该栈帧所属方法的引用，其目的是为了支持方法调用过程中的动态连接。</p>
 </li>
-<li><p><strong>Java 堆</strong></p>
-<p>存放对象实例。线程共享。</p>
+<li><p>方法返回地址</p>
+<p>一个方法开始执行后，有两种方式可以退出这个方法：</p>
+<ol>
+<li>正常完成出口：执行引擎遇到任意一个返回的字节码指令。</li>
+<li>异常完成出口：方法执行过程中遇到了异常，并且这个异常没有在方法体内得到处理，在本方法的异常表中没有搜索到匹配的异常处理器，就会导致方法退出。</li>
+</ol>
+<p>方法退出后，需要返回到方法被调用的位置。正常退出时，调用者的 PC 计数器的值可作为返回地址；异常退出时，返回地址通过异常处理器来确定。</p>
 </li>
-<li><p><strong>方法区</strong></p>
-<p>线程共享。用于存储已被虚拟机加载的类信息，常量，静态变量，即时编译期编译后的代码等数据。</p>
-</li>
-<li><p><strong>运行时常量池</strong></p>
-<p>方法区的一部分。用于存放编译期生成的各种字面量和符号引用。</p>
+<li><p>附加信息</p>
 </li>
 </ul>
 <a id="more"></a>
-<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><h3 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h3><p>先进行类加载检查，通过后，虚拟机将为新生对象分配内存。对象所需内存大小在类加载完成后便可完全确定，为其分配空间等同于把一块确定大小的内存从Java堆中划分出来。有两种分配方式：<strong>指针碰撞</strong>和<strong>空闲列表</strong>。</p>
-<p>指针碰撞是把指针向空闲空间挪动一段与对象大小相等的距离，要求堆中的内存绝对规整。使用空闲列表时，虚拟机必须维护一个列表，记录哪些内存块可用，分配的时候从列表中找到一块足够大的空间划分给对象实例，并更新列表上的记录。</p>
-<p>分配的时候要考虑线程同步问题，有两种方案：对分配内存空间的动作进行同步处理，另一种是把内存分配的动作按照线程划分在不同空间中进行，即每个线程在堆中预先分配一小块内存，此种方式称为本地线程分配缓冲。</p>
-<p>内存分配完成后，虚拟机将分配到的内存空间初始化为零值，保证了对象的实例字段在不赋初始值就直接使用。接下来，虚拟机对对象进行必要的设置，例如此对象是哪个类的实例，如何找到类的元数据信息等，这些信息存放在对象头中。最后将执行 init 方法。</p>
-<h3 id="对象的内存布局"><a href="#对象的内存布局" class="headerlink" title="对象的内存布局"></a>对象的内存布局</h3><p>对象在内存中的布局分为三个区域：对象头，实例数据，对齐填充。</p>
+<h2 id="方法调用"><a href="#方法调用" class="headerlink" title="方法调用"></a>方法调用</h2><p>Class 文件编译过程中不包含连接步骤，一切方法调用在 Class 文件中存储的只是符号引用，而不是实际运行时内存布局的入口地址（直接引用），这也使得 Java 具有强大的动态扩展能力。</p>
 <ul>
-<li><p><strong>对象头</strong></p>
-<p>包括两部分信息：第一部分用于存储对象自身的运行数据，如哈希码，锁状态标志等。另一部分是类型指针，即对象指向它的类元数据的指针。</p>
-</li>
-<li><p><strong>实例数据</strong></p>
-<p>对象真正存储的有效信息。</p>
-</li>
-<li><p><strong>对齐填充</strong></p>
-<p>起占位符作用。</p>
-</li>
+<li><p><strong>解析</strong></p>
+<p>在类加载的解析阶段，会将一部分符号引用转化为直接引用。这种解析能成立的前提是：方法在程序运行前就有一个确定的可调用版本，并且其在运行期是不可改变的。</p>
+<p>符合“编译期可知，运行期不变”的方法主要有静态方法和私有方法。在 Java 虚拟机里有五条方法调用的字节码指令：</p>
+<ul>
+<li>invokestatic</li>
+<li>invokespecial</li>
+<li>invokevirtual</li>
+<li>invokeinterface</li>
+<li>invokedynamic</li>
 </ul>
-<h3 id="对象的访问定位"><a href="#对象的访问定位" class="headerlink" title="对象的访问定位"></a>对象的访问定位</h3><p>访问方式：句柄或直接指针。</p>
-<!--more-->
+<p>只要能被 invokestatic, invokespecial 调用的方法，都可以在解析阶段唯一确定调用版本。符合这个条件的有静态方法，私有方法，实例构造器和父类方法四类。它们在类加载阶段会把符合引用解析为方法的直接引用，这些方法称为非虚方法。其它方法则称为虚方法（除去 final 方法）。final 方法虽使用 invokevirtual 来调用，但由于它无法覆盖，也属于非虚方法。</p>
+</li>
+<li><p><strong>分派</strong></p>
+<ol>
+<li><p>静态分派</p>
+<p>变量有静态类型和实际类型。举个例子，类 <code>Man</code> 和类 <code>Woman</code> 都是类 <code>Human</code> 的子类，在下面的代码中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Human man = <span class="keyword">new</span> Man();</div></pre></td></tr></table></figure>
+<p><code>Human</code> 称为变量的静态类型，<code>Man</code> 称为变量的实际类型。静态类型和实际类型在程序中都可发生一些变化。区别是静态类型的变化仅在使用时发生，变量本身的静态类型不会发生改变，并且静态类型是编译期可知的；而实际类型变化的结果只有在运行期才可确定。如下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//实际类型变化</span></div><div class="line">Human man = <span class="keyword">new</span> Man();</div><div class="line">man = <span class="keyword">new</span> Woman();</div><div class="line"><span class="comment">//静态类型变化</span></div><div class="line">sr.sayHello((Man)man);</div></pre></td></tr></table></figure>
+<p>虚拟机在方法重载时是通过参数的静态类型而非实际类型作为判定依据的，而静态类型在编译期可知，因此，在编译阶段，虚拟机会根据参数的静态类型决定使用哪个重载版本。所有依赖静态类型来定位方法执行版本的分派动作称为静态分派。</p>
+</li>
+<li><p>动态分派</p>
+<p>先看一个例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Human man = <span class="keyword">new</span> Man();</div><div class="line"><span class="comment">//这里会调用类Man的sayHello方法</span></div><div class="line">man.sayHello();</div><div class="line">man = <span class="keyword">new</span> Woman();</div><div class="line"><span class="comment">//这里会调用类Woman的sayHello方法</span></div><div class="line">man.sayHello();</div></pre></td></tr></table></figure>
+<p>调用上述方法时会执行 invokevirtual 指令，其解析过程分为以下几步：</p>
+<p>(1) 找到操作数栈顶的第一个元素所指向对象的实际类型</p>
+<p>(2) 在该类型中找到与常量描述符和简单名称都相符的方法，若找到且访问权限通过，则返回这个方法的直接引用</p>
+<p>(3) 若找不到，则按照继承关系从下往上一次对该类型的父类进行步骤(2)</p>
+<p>(4) 若始终没找到，则抛出异常</p>
+<p>invokevirtual 指令执行的第一步是在运行期确定接收者的实际类型，调用过程中把常量池中的类方法符号引用解析到了不同的直接引用上，这个过程是 Java 语言方法重写的本质。</p>
+</li>
+<li><p>单分派与多分派</p>
+<p>方法接收者和方法的参数统称为宗量。Java 是静态多分派，动态单分派。</p>
+</li>
+<li><p>虚拟机动态分派的实现</p>
+<p>动态分派的方法版本选择中需要运行时在类的方法元数据中搜索合适的目标方法，基于性能考虑，常用的方法是在为类在方法区建立一个虚方法表，其存放着各个方法的实际入口地址。若某个方法没有在子类中重写，则虚方法表存放的是父类方法的入口地址。</p>
+</li>
+</ol>
+<!--more--></li>
+</ul>
+
       
     </div>
 
@@ -442,6 +456,12 @@ Java虚拟机栈
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
 
       
         
@@ -451,8 +471,8 @@ Java虚拟机栈
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/25/oom/" rel="next" title="Android 中常见的内存泄漏">
-                <i class="fa fa-chevron-left"></i> Android 中常见的内存泄漏
+              <a href="/2017/09/01/Class File/" rel="next" title="类文件结构">
+                <i class="fa fa-chevron-left"></i> 类文件结构
               </a>
             
           </div>
@@ -461,8 +481,8 @@ Java虚拟机栈
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/29/GC/" rel="prev" title="垃圾收集器与内存分配策略">
-                垃圾收集器与内存分配策略 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/09/JMM and Thread/" rel="prev" title="JMM 和 Thread">
+                JMM 和 Thread <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -489,8 +509,8 @@ Java虚拟机栈
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/08/26/Java Memery/"
-           data-title="Java 内存区域与内存溢出" data-url="http://byacht.github.io/2017/08/26/Java Memery/">
+      <div class="ds-thread" data-thread-key="2017/09/06/Virtual Machine Execution Engine/"
+           data-title="虚拟机字节码执行引擎" data-url="http://byacht.github.io/2017/09/06/Virtual Machine Execution Engine/">
       </div>
     
   </div>
@@ -603,7 +623,7 @@ Java虚拟机栈
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tags-Java"><span class="nav-number">1.</span> <span class="nav-text">tags: Java</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java内存区域与内存溢出"><span class="nav-number"></span> <span class="nav-text">Java内存区域与内存溢出</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#运行时数据区域"><span class="nav-number">1.</span> <span class="nav-text">运行时数据区域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象"><span class="nav-number">2.</span> <span class="nav-text">对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的创建"><span class="nav-number">2.1.</span> <span class="nav-text">对象的创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的内存布局"><span class="nav-number">2.2.</span> <span class="nav-text">对象的内存布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的访问定位"><span class="nav-number">2.3.</span> <span class="nav-text">对象的访问定位</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#虚拟机字节码执行引擎"><span class="nav-number">1.</span> <span class="nav-text">虚拟机字节码执行引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#运行时栈帧结构"><span class="nav-number">1.1.</span> <span class="nav-text">运行时栈帧结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法调用"><span class="nav-number">1.2.</span> <span class="nav-text">方法调用</span></a></li></ol></li></ol></div>
             
 
           </div>
