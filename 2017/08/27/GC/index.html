@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="旅游," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -87,16 +87,16 @@
 
 
 
-<meta name="description" content="访问需要密码">
+<meta name="description" content="垃圾收集器与内存分配策略对象已死吗引用计数法给对象添加一个引用计数器，当有一个地方引用它时，计数器值加 1，引用失效时，计数器减 1，当计数器为 0 的对象就是不再被使用的。目前主流的 Java 虚拟机不使用此种方法，原因是它难以解决对象之间相互循环引用的问题。例如，对象 A 和对象 B 都有字段 instance，令 A.instance = B 以及 B.instance = A ，此时它们互">
 <meta property="og:type" content="article">
-<meta property="og:title" content="桂林之旅">
-<meta property="og:url" content="http://byacht.github.io/2017/03/23/GuiLin/index.html">
+<meta property="og:title" content="Byacht">
+<meta property="og:url" content="http://byacht.github.io/2017/08/27/GC/index.html">
 <meta property="og:site_name" content="Byacht">
-<meta property="og:description" content="访问需要密码">
-<meta property="og:updated_time" content="2017-04-09T02:23:04.061Z">
+<meta property="og:description" content="垃圾收集器与内存分配策略对象已死吗引用计数法给对象添加一个引用计数器，当有一个地方引用它时，计数器值加 1，引用失效时，计数器减 1，当计数器为 0 的对象就是不再被使用的。目前主流的 Java 虚拟机不使用此种方法，原因是它难以解决对象之间相互循环引用的问题。例如，对象 A 和对象 B 都有字段 instance，令 A.instance = B 以及 B.instance = A ，此时它们互">
+<meta property="og:updated_time" content="2017-08-29T07:14:36.053Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="桂林之旅">
-<meta name="twitter:description" content="访问需要密码">
+<meta name="twitter:title" content="Byacht">
+<meta name="twitter:description" content="垃圾收集器与内存分配策略对象已死吗引用计数法给对象添加一个引用计数器，当有一个地方引用它时，计数器值加 1，引用失效时，计数器减 1，当计数器为 0 的对象就是不再被使用的。目前主流的 Java 虚拟机不使用此种方法，原因是它难以解决对象之间相互循环引用的问题。例如，对象 A 和对象 B 都有字段 instance，令 A.instance = B 以及 B.instance = A ，此时它们互">
 
 
 
@@ -124,8 +124,8 @@
 
 <script>
     (function(){
-        if('123456'){
-            if (prompt('Please enter the password','') !== '123456'){
+        if(''){
+            if (prompt('Please enter the password','') !== ''){
                 alert('Wrong!');
                 history.back();
             }
@@ -135,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://byacht.github.io/2017/03/23/GuiLin/"/>
+  <link rel="canonical" href="http://byacht.github.io/2017/08/27/GC/"/>
 
 
 
 
 
-  <title> 桂林之旅 | Byacht </title>
+  <title>  | Byacht </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-hk">
@@ -268,7 +268,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://byacht.github.io/2017/03/23/GuiLin/">
+  <link itemprop="mainEntityOfPage" href="http://byacht.github.io/2017/08/27/GC/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Byacht">
@@ -292,7 +292,7 @@
             
             
               
-                桂林之旅
+                
               
             
           </h1>
@@ -307,8 +307,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-23T00:15:07+08:00">
-                2017-03-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-27T15:07:31+08:00">
+                2017-08-27
               </time>
             
 
@@ -326,8 +326,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/23/GuiLin/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/23/GuiLin/" itemprop="commentCount"></span>
+                <a href="/2017/08/27/GC/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/08/27/GC/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -335,7 +335,7 @@
 
           
           
-             <span id="/2017/03/23/GuiLin/" class="leancloud_visitors" data-flag-title="桂林之旅">
+             <span id="/2017/08/27/GC/" class="leancloud_visitors" data-flag-title="">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -352,10 +352,6 @@
           
 
           
-              <div class="post-description">
-                  访问需要密码
-              </div>
-          
 
         </div>
       </header>
@@ -368,13 +364,114 @@
       
 
       
-        <h1 id="基本行程安排"><a href="#基本行程安排" class="headerlink" title="基本行程安排"></a>基本行程安排</h1><p>D1：下午 广州 → 桂林西（高铁）<br>晚上 两江四湖游览、正阳步行街<br>住宿地：桂林（如家快捷酒店(桂林七星公园店)）</p>
-<p>D2：上午 桂林市区：象鼻山<br>下午 龙脊梯田（大寨金坑梯田）<br>住宿地：大寨</p>
-<p>D3：下午 龙脊梯田 → 桂林 → 阳朔 （汽车）<br>晚上 西街<br>住宿地：阳朔花果山主题客栈</p>
-<p>D4：上午 遇龙河漂流<br>下午 回桂林<br>晚上 返回广州</p>
-<p>下面说说具体的行程：</p>
-<h1 id="Day-1"><a href="#Day-1" class="headerlink" title="Day 1"></a>Day 1</h1><p>于下午从广州南站搭高铁到桂林西站，大概三个小时左右，到达桂林时已是晚上八点。出高铁站后直接搭公车到桂林市区，<strong>注意：</strong>，两江四湖的乘船游览时间，九点是最后一班船，故如想乘船游览，请自己把控好时间。博主因到达时间太晚，已错过乘船时间，故徒步在日月双塔公园绕了一圈，感觉还是差不多。酒店订在公园附近，逛完公园后就直接回酒店休息了。</p>
-<h1 id="Day-2"><a href="#Day-2" class="headerlink" title="Day 2"></a>Day 2</h1><p>早上大概八点起床，前往象鼻山公园，因为路程不远，便直接步行过去了。途中经过一条小溪吧，看见人直接徒步行走过去，便也想尝试一下，奈何水里的石头长满了青苔，某只脚一滑直接将鞋子掉进水里，故最后还是放弃了。随后到达象鼻山公园，讲真，里面的水感觉有点脏，还有种发臭的味道（不过因为今年春晚分会场在那，听说已经清理得挺干净的了）。逛完象鼻山，中午去吃了椿记烧鹅</p>
+        <h1 id="垃圾收集器与内存分配策略"><a href="#垃圾收集器与内存分配策略" class="headerlink" title="垃圾收集器与内存分配策略"></a>垃圾收集器与内存分配策略</h1><h2 id="对象已死吗"><a href="#对象已死吗" class="headerlink" title="对象已死吗"></a>对象已死吗</h2><h3 id="引用计数法"><a href="#引用计数法" class="headerlink" title="引用计数法"></a>引用计数法</h3><p>给对象添加一个引用计数器，当有一个地方引用它时，计数器值加 1，引用失效时，计数器减 1，当计数器为 0 的对象就是不再被使用的。目前主流的 Java 虚拟机不使用此种方法，原因是它难以解决对象之间相互循环引用的问题。例如，对象 A 和对象 B 都有字段 <code>instance</code>，令 <code>A.instance = B</code> 以及 <code>B.instance = A</code> ，此时它们互相引用着对方，除此之外没有其它引用，实际上已经不可能被访问到，但它们的计数都不为 0，无法被 GC 回收。</p>
+<h3 id="可达性分析法"><a href="#可达性分析法" class="headerlink" title="可达性分析法"></a>可达性分析法</h3><p>从GC Roots 到对象不可达时，则证明此对象是不可用的。GC Roots 的对象包括：</p>
+<ul>
+<li>虚拟机栈中引用的对象</li>
+<li>方法区中类静态属性引用的对象</li>
+<li>方法区中常量引用的对象</li>
+<li>本地方法栈中JNI 引用的对象。</li>
+</ul>
+<h3 id="再谈引用"><a href="#再谈引用" class="headerlink" title="再谈引用"></a>再谈引用</h3><p>Java 中引用分为四种：</p>
+<ul>
+<li><p><strong>强引用</strong></p>
+<p>类似 <code>Object obj = new Object()</code> 之类的引用，只要强引用还在，GC 则不会对其进行回收。</p>
+</li>
+<li><p><strong>软引用</strong></p>
+<p>用来描述一些有用但非必须的对象。在发生内存溢出之前，GC 会回收此类对象。Java 中提供了 <code>SoftReference</code> 类来实现软引用。</p>
+</li>
+<li><p><strong>弱引用</strong></p>
+<p>用来描述非必需的对象。强度必软引用更弱，被弱引用关联的对象只能生存到下一次 GC 之前，GC 工作时，无论内存是否足够，都会回收。对应的类为 <code>WeakReference</code>。</p>
+</li>
+<li><p><strong>虚引用</strong></p>
+<p>最弱的一种引用关系。无法通过虚引用取得对象实例。为一个对象设置虚引用的唯一目的是能在该对象被回收时收到一个系统通知。对应的类为 <code>PhantomReference</code>。</p>
+</li>
+</ul>
+<h3 id="回收方法区"><a href="#回收方法区" class="headerlink" title="回收方法区"></a>回收方法区</h3><p>主要回收两部分内容：<strong>废弃常量</strong>和<strong>无用的类</strong>。无用的类需满足下面三个条件：</p>
+<ul>
+<li>该类的所有实例已被回收</li>
+<li>加载该类的 ClassLoader 已被回收</li>
+<li>该类对应的 java.lang.Class 对象没有在其它地方被引用，无法通过反射访问该类的方法</li>
+</ul>
+<h2 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h2><ul>
+<li><p><strong>标记-清除算法</strong></p>
+<p>标记所要回收的对象，标记完成后统一回收。缺点：标记和清除两个过程效率不高；标记清除后产生大量不连续的内存碎片。</p>
+</li>
+<li><p><strong>复制算法</strong></p>
+<p>将可用内存分为大小相等的两块，每次只使用其中一块。当一块内存用完了，将还存活的对象复制到另一块上面，再把已使用过的内存空间清理掉。实现简单，高效，代价是将内存缩小为原来的一半。在新生代中，对象 98% 是“朝生夕死”的，因此不必按照 1：1 来划分内存空间，而是将内存分为一块较大的 Eden 空间和两块较小的 Survivor 空间，每次使用 Eden 和其中一块Survivor。回收时，将还存活的对象复制到另一块 Survivor 空间上，清理掉另外两块空间。Eden和Survivor默认大小比例是 8：1。若 Survivor 空间不够，将依赖其它内存进行分配担保。</p>
+</li>
+<li><p><strong>标记-整理算法</strong></p>
+<p>老年代中对象存活率一般较高，不使用复制算法。与标记-清除算法类似，不同的是后续步骤不是直接回收对象，而是让所有存活的对象向另一端移动，然后直接清理掉端边界外的内存。</p>
+</li>
+<li><p><strong>分代收集算法</strong></p>
+<p>把Java堆分为新生代和老年代，为其选择不同的算法。</p>
+</li>
+</ul>
+<h2 id="HotSpot-的算法实现"><a href="#HotSpot-的算法实现" class="headerlink" title="HotSpot 的算法实现"></a>HotSpot 的算法实现</h2><h3 id="枚举根结点"><a href="#枚举根结点" class="headerlink" title="枚举根结点"></a>枚举根结点</h3><p>可达性分析过程中必需确保一致性，即分析过程中对象的引用关系不可变，这就要求 GC 进行时必需停顿所有 Java 执行线程。</p>
+<p>另外，可达性分析过程中若要一个不漏地检查完执行上下文和全局的引用位置，需耗费很多时间。因此，在 HotSpot 中，使用一组称为 OopMap 的数据结构来直接得知哪些地方存放着对象的引用，而不需逐个检查。</p>
+<h3 id="安全点"><a href="#安全点" class="headerlink" title="安全点"></a>安全点</h3><p>若为每条指令生成 OopMap 将会耗费大量空间。故实际中只在特定位置记录了这些信息，这些位置称为安全点。程序执行时只有到达安全点才能暂停。为了在 GC 发生时所有线程跑到最近的安全点才停下来，常采用主动式中断的方式：当 GC 需中断时，不直接对线程进行操作，仅设置一个标志，让个线程轮询此标志，发现中断标志为真时自己就中断挂起，轮询标志与安全点是重合的。</p>
+<h3 id="安全区域"><a href="#安全区域" class="headerlink" title="安全区域"></a>安全区域</h3><p>程序不执行时，例如线程处于 Sleep 或 Blocked 状态，此时线程无法响应中断请求。为解决此问题，采用安全区域。安全区域是指在一段代码片段内，引用关系不会发生改变，在此区域中任何地方进行 GC 是安全的。</p>
+<p>线程执行到 Safe Region 时，标志自己进入了此区域，在这段时间内，若 JVM 要进行 GC，就不用管标志为安全区域的线程了。当线程要离开 Safe Region 时，需先检查是否完成了根结点枚举，若完成则线程继续执行，否则需等待知道收到可安全离开安全区域的信号为止。</p>
+<h2 id="垃圾收集器"><a href="#垃圾收集器" class="headerlink" title="垃圾收集器"></a>垃圾收集器</h2><p>首先来了解下<strong>并行</strong>和<strong>并发</strong>的概念：</p>
+<p><strong>并行</strong>：多条垃圾收集线程并行执行，而用户线程处于等待状态。</p>
+<p><strong>并发</strong>：用户线程与垃圾收集器线程同时执行，但不一定是并行的，可能是交替执行。</p>
+<ul>
+<li><p><strong>Serial 收集器</strong></p>
+<p>单线程收集器，使用一个 CPU 或一条收集线程收集，收集时必需暂停所有线程。优点：简单而高效（与其它收集器的单线程相比）。Client 模式下的虚拟机的选择。</p>
+</li>
+<li><p><strong>Parnew 收集器</strong></p>
+<p>Serial 收集器的多线程版本。使用多条线程进行垃圾收集。在单 CPU 环境下性能不比 Serial 好。Server 模式下的虚拟机中首选的新生代收集器，其中一个原因是目前除了 Serial 收集器，只有它能与 CMS 收集器配合工作。</p>
+</li>
+<li><p><strong>Paralel Scavenge 收集器</strong></p>
+<p>并行多线程的新生代收集器，采用复制算法。与上面两个收集器不同，其关注的不是缩短停顿时间，而是吞吐量。所谓吞吐量，举个例子，虚拟机运行了 100 分钟，其中 GC 进行了 1 分钟，吞吐量就是 99%。</p>
+</li>
+<li><p><strong>Serial Old 收集器</strong></p>
+<p>Serial 收集器的老年代版本，使用标记-整理算法。</p>
+</li>
+<li><p><strong>Parallel Old 收集器</strong></p>
+<p>Paralel Scavenge 的老年代版本，使用多线程和标记-整理算法。</p>
+</li>
+<li><p><strong>Cms 收集器</strong></p>
+<p>采用标记-清除算法。收集主要包括四个步骤：</p>
+<ol>
+<li>初始标记：仅标记一下 GC Roots 能直接关联的对象，速度快</li>
+<li>并发标记：进行 GC Roots Tracing 的过程</li>
+<li>重新标记：修正并发标记过程中因用户程序运行而导致标记产生变动的那一部分对象</li>
+<li>并发清除</li>
+</ol>
+<p>因耗时较长的并发标记和并发清除过程可以与用户线程一起工作，故停顿时间较短。</p>
+<p>其缺点主要有：</p>
+<ol>
+<li>对 CPU 资源敏感。在并发阶段，虽不会导致用户线程停顿，但会占用线程资源而使程序变慢。</li>
+<li>无法处理浮动垃圾。并发清除阶段用户线程仍在运行，会产生垃圾。因此，在清除过程中需预留一定内存空间供用户线程使用。若预留的内存不足，虚拟机将临时启用 Serial Old 收集器重新进行收集，导致停顿时间变长。</li>
+<li>标记-清除算法会产生大量内存碎片。</li>
+</ol>
+</li>
+<li><p><strong>G1 收集器</strong></p>
+<p>主要包括以下四个步骤：</p>
+<ol>
+<li>初始标记</li>
+<li>并发标记</li>
+<li>最终标记</li>
+<li>筛选回收</li>
+</ol>
+</li>
+</ul>
+<h2 id="内存分配"><a href="#内存分配" class="headerlink" title="内存分配"></a>内存分配</h2><ul>
+<li><p>对象优先在 Eden 区分配</p>
+</li>
+<li><p>大对象直接进入老年代</p>
+</li>
+<li><p>长期存活的对象将进入老年代</p>
+<p>若对象出生在 Eden ，在进行一次 Minor GC 后仍存活并能被 Survivor 容纳，则将对象的年龄加一，当年龄达到指定大小时将晋升到老年代中。</p>
+</li>
+<li><p>动态对象年龄判定</p>
+<p>如果在 Survivor 空间中相同年龄的对象的大小大于总空间的一半，则年龄大于等于这些年龄的对象将进入老年代，而无需等到指定年龄。</p>
+</li>
+<li><p>空间分配担保</p>
+<p>发生 Minor GC 前，虚拟机先检查老年代的最大可用的连续空间是否大于新生代所有对象的总空间，若条件成立，则可确保 Minor GC 是安全的。若不成立，则查看 HandlePromotionFailure 是否允许担保失败，如果允许，则将检查老年代最大可用连续内存空间是否大于历次晋升到老年代的对象的平均大小，若大于，将尝试进行一次 Minor GC，尽管有风险；若小于，或 HandlePromotionFailure 不允许担保失败，则进行一次 Full GC。</p>
+</li>
+</ul>
 
       
     </div>
@@ -396,12 +493,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/旅游/" rel="tag"># 旅游</a>
-          
-        </div>
-      
 
       
         
@@ -411,8 +502,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/20/GreenDao-Notes/" rel="next" title="GreenDao基本用法及其query方法详解">
-                <i class="fa fa-chevron-left"></i> GreenDao基本用法及其query方法详解
+              <a href="/2017/08/26/Java Memery/" rel="next" title="Java 内存区域与内存溢出">
+                <i class="fa fa-chevron-left"></i> Java 内存区域与内存溢出
               </a>
             
           </div>
@@ -421,8 +512,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/06/photo-wall/" rel="prev" title="Retrofit2 用法总结">
-                Retrofit2 用法总结 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/08/30/Class File/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -449,8 +540,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/23/GuiLin/"
-           data-title="桂林之旅" data-url="http://byacht.github.io/2017/03/23/GuiLin/">
+      <div class="ds-thread" data-thread-key="2017/08/27/GC/"
+           data-title="" data-url="http://byacht.github.io/2017/08/27/GC/">
       </div>
     
   </div>
@@ -563,7 +654,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本行程安排"><span class="nav-number">1.</span> <span class="nav-text">基本行程安排</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-1"><span class="nav-number">2.</span> <span class="nav-text">Day 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-2"><span class="nav-number">3.</span> <span class="nav-text">Day 2</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#垃圾收集器与内存分配策略"><span class="nav-number">1.</span> <span class="nav-text">垃圾收集器与内存分配策略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#对象已死吗"><span class="nav-number">1.1.</span> <span class="nav-text">对象已死吗</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引用计数法"><span class="nav-number">1.1.1.</span> <span class="nav-text">引用计数法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可达性分析法"><span class="nav-number">1.1.2.</span> <span class="nav-text">可达性分析法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#再谈引用"><span class="nav-number">1.1.3.</span> <span class="nav-text">再谈引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回收方法区"><span class="nav-number">1.1.4.</span> <span class="nav-text">回收方法区</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾收集算法"><span class="nav-number">1.2.</span> <span class="nav-text">垃圾收集算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HotSpot-的算法实现"><span class="nav-number">1.3.</span> <span class="nav-text">HotSpot 的算法实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#枚举根结点"><span class="nav-number">1.3.1.</span> <span class="nav-text">枚举根结点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安全点"><span class="nav-number">1.3.2.</span> <span class="nav-text">安全点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安全区域"><span class="nav-number">1.3.3.</span> <span class="nav-text">安全区域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾收集器"><span class="nav-number">1.4.</span> <span class="nav-text">垃圾收集器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存分配"><span class="nav-number">1.5.</span> <span class="nav-text">内存分配</span></a></li></ol></li></ol></div>
             
 
           </div>

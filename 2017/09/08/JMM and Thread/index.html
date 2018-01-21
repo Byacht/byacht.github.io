@@ -87,15 +87,19 @@
 
 
 
-<meta name="description" content="积少成多">
-<meta property="og:type" content="website">
+<meta name="description" content="JMM 和 Thread为解决 CPU 与内存速度的不匹配，加入了高速缓存来作为内存与处理器之间的缓冲，但也引入了一个问题：缓存一致性。每个处理器拥有自己的高速缓存，用共享同一块主内存。当多个处理器的运算任务都涉及同一主内存时，可能导致各自的缓存数据不一致。为解决此问题，在访问缓存时需遵守一些特定的协议。
+Java 内存模型主内存和工作内存Java 内存模型的主要目标是定义程序中各个变量的访问规则">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Byacht">
-<meta property="og:url" content="http://byacht.github.io/archives/2017/02/index.html">
+<meta property="og:url" content="http://byacht.github.io/2017/09/08/JMM and Thread/index.html">
 <meta property="og:site_name" content="Byacht">
-<meta property="og:description" content="积少成多">
+<meta property="og:description" content="JMM 和 Thread为解决 CPU 与内存速度的不匹配，加入了高速缓存来作为内存与处理器之间的缓冲，但也引入了一个问题：缓存一致性。每个处理器拥有自己的高速缓存，用共享同一块主内存。当多个处理器的运算任务都涉及同一主内存时，可能导致各自的缓存数据不一致。为解决此问题，在访问缓存时需遵守一些特定的协议。
+Java 内存模型主内存和工作内存Java 内存模型的主要目标是定义程序中各个变量的访问规则">
+<meta property="og:updated_time" content="2017-09-09T08:32:53.552Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Byacht">
-<meta name="twitter:description" content="积少成多">
+<meta name="twitter:description" content="JMM 和 Thread为解决 CPU 与内存速度的不匹配，加入了高速缓存来作为内存与处理器之间的缓冲，但也引入了一个问题：缓存一致性。每个处理器拥有自己的高速缓存，用共享同一块主内存。当多个处理器的运算任务都涉及同一主内存时，可能导致各自的缓存数据不一致。为解决此问题，在访问缓存时需遵守一些特定的协议。
+Java 内存模型主内存和工作内存Java 内存模型的主要目标是定义程序中各个变量的访问规则">
 
 
 
@@ -134,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://byacht.github.io/archives/2017/02/"/>
+  <link rel="canonical" href="http://byacht.github.io/2017/09/08/JMM and Thread/"/>
 
 
 
 
 
-  <title> 归档 | Byacht </title>
+  <title>  | Byacht </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-hk">
@@ -165,7 +169,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -257,177 +261,191 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共有 14 篇文章。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
-
-      
-      
-      
-
-      
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
-        </div>
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/02/26/Problem-in-Accounting/" itemprop="url">
-              
-                <span itemprop="name">项目中遇到的问题</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-02-26T22:01:49+08:00"
-              content="2017-02-26" >
-          02-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/02/18/Handler/" itemprop="url">
-              
-                <span itemprop="name">Handler工作原理分析</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-02-18T17:49:35+08:00"
-              content="2017-02-18" >
-          02-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/02/18/Markdown/" itemprop="url">
-              
-                <span itemprop="name">Markdown用法</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-02-18T00:11:34+08:00"
-              content="2017-02-18" >
-          02-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/02/17/hello/" itemprop="url">
-              
-                <span itemprop="name">hello</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-02-17T22:37:23+08:00"
-              content="2017-02-17" >
-          02-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
 
   
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://byacht.github.io/2017/09/08/JMM and Thread/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Byacht">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="data:image/jpeg;base64,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">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Byacht">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Byacht" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-08T13:31:30+08:00">
+                2017-09-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/09/08/JMM and Thread/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/08/JMM and Thread/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/09/08/JMM and Thread/" class="leancloud_visitors" data-flag-title="">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="JMM-和-Thread"><a href="#JMM-和-Thread" class="headerlink" title="JMM 和 Thread"></a>JMM 和 Thread</h1><p>为解决 CPU 与内存速度的不匹配，加入了高速缓存来作为内存与处理器之间的缓冲，但也引入了一个问题：缓存一致性。每个处理器拥有自己的高速缓存，用共享同一块主内存。当多个处理器的运算任务都涉及同一主内存时，可能导致各自的缓存数据不一致。为解决此问题，在访问缓存时需遵守一些特定的协议。</p>
+<h2 id="Java-内存模型"><a href="#Java-内存模型" class="headerlink" title="Java 内存模型"></a>Java 内存模型</h2><h3 id="主内存和工作内存"><a href="#主内存和工作内存" class="headerlink" title="主内存和工作内存"></a>主内存和工作内存</h3><p>Java 内存模型的主要目标是定义程序中各个变量的访问规则，即虚拟机将变量存储到内存以及从内存读取变量的底层细节。这里所说的变量包括实例字段、静态字段和构成数组对象的元素，不包括局部变量和方法参数，因为它们是线程私有的。</p>
+<p>Java 内存模型规定了每个变量存储在主内存中，此外，每条线程还有自己的工作内存。线程对变量的操作必需在工作内存中进行，不能直接读写在主内存的变量。</p>
+<h3 id="内存间交互操作"><a href="#内存间交互操作" class="headerlink" title="内存间交互操作"></a>内存间交互操作</h3><p>关于主内存和工作内存之间的交互协议，Java 内存模型中定义了八种操作：</p>
+<ul>
+<li>lock</li>
+<li>unlock</li>
+<li>read</li>
+<li>load</li>
+<li>use</li>
+<li>assign</li>
+<li>store</li>
+<li>write</li>
+</ul>
+<h3 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h3><p>被 volatile 修饰的变量具有两种特性：</p>
+<ol>
+<li>保证此变量对所有线程的可见性。可见性是指当一条线程修改了此变量的值，新值对其它线程来说是立即得知的。虽然 volatile 变量在各个工作内存是一致的，但 Java 里面的运算并非原子操作，因此 volatile 变量的运算在并发过程中一样是不安全的。</li>
+<li>禁止指令重排序。</li>
+</ol>
+<p>由于 volatile 只能保证可见性，对于不符合以下两条规则的运算场景，仍需通过加锁来保证原子性。</p>
+<ul>
+<li>运算结果并不依赖变量当前值，或者能确保只有单一的线程修改变量的值</li>
+<li>变量不需要与其它状态变量共同参与不变约束</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/04/Virtual Machine Execution Engine/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
           
           </div>
@@ -435,6 +453,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/09/08/JMM and Thread/"
+           data-title="" data-url="http://byacht.github.io/2017/09/08/JMM and Thread/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -454,8 +480,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="data:image/jpeg;base64,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"
@@ -524,6 +559,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JMM-和-Thread"><span class="nav-number">1.</span> <span class="nav-text">JMM 和 Thread</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-内存模型"><span class="nav-number">1.1.</span> <span class="nav-text">Java 内存模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主内存和工作内存"><span class="nav-number">1.1.1.</span> <span class="nav-text">主内存和工作内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存间交互操作"><span class="nav-number">1.1.2.</span> <span class="nav-text">内存间交互操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#volatile"><span class="nav-number">1.1.3.</span> <span class="nav-text">volatile</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
@@ -623,11 +674,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
 
 
   
