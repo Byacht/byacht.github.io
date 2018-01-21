@@ -87,16 +87,19 @@
 
 
 
-<meta name="description" content="垃圾收集器与内存分配策略对象已死吗引用计数法给对象添加一个引用计数器，当有一个地方引用它时，计数器值加 1，引用失效时，计数器减 1，当计数器为 0 的对象就是不再被使用的。目前主流的 Java 虚拟机不使用此种方法，原因是它难以解决对象之间相互循环引用的问题。例如，对象 A 和对象 B 都有字段 instance，令 A.instance = B 以及 B.instance = A ，此时它们互">
+<meta name="description" content="title: 垃圾收集器与内存分配策略date: 2017-08-29 15:14:25tags: Java
+垃圾收集器与内存分配策略对象已死吗引用计数法给对象添加一个引用计数器，当有一个地方引用它时，计数器值加 1，引用失效时，计数器减 1，当计数器为 0 的对象就是不再被使用的。目前主流的 Java 虚拟机不使用此种方法，原因是它难以解决对象之间相互循环引用的问题。例如，对象 A 和对象 B">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Byacht">
 <meta property="og:url" content="http://byacht.github.io/2017/08/27/GC/index.html">
 <meta property="og:site_name" content="Byacht">
-<meta property="og:description" content="垃圾收集器与内存分配策略对象已死吗引用计数法给对象添加一个引用计数器，当有一个地方引用它时，计数器值加 1，引用失效时，计数器减 1，当计数器为 0 的对象就是不再被使用的。目前主流的 Java 虚拟机不使用此种方法，原因是它难以解决对象之间相互循环引用的问题。例如，对象 A 和对象 B 都有字段 instance，令 A.instance = B 以及 B.instance = A ，此时它们互">
-<meta property="og:updated_time" content="2017-08-29T07:14:36.053Z">
+<meta property="og:description" content="title: 垃圾收集器与内存分配策略date: 2017-08-29 15:14:25tags: Java
+垃圾收集器与内存分配策略对象已死吗引用计数法给对象添加一个引用计数器，当有一个地方引用它时，计数器值加 1，引用失效时，计数器减 1，当计数器为 0 的对象就是不再被使用的。目前主流的 Java 虚拟机不使用此种方法，原因是它难以解决对象之间相互循环引用的问题。例如，对象 A 和对象 B">
+<meta property="og:updated_time" content="2018-01-21T03:30:13.673Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Byacht">
-<meta name="twitter:description" content="垃圾收集器与内存分配策略对象已死吗引用计数法给对象添加一个引用计数器，当有一个地方引用它时，计数器值加 1，引用失效时，计数器减 1，当计数器为 0 的对象就是不再被使用的。目前主流的 Java 虚拟机不使用此种方法，原因是它难以解决对象之间相互循环引用的问题。例如，对象 A 和对象 B 都有字段 instance，令 A.instance = B 以及 B.instance = A ，此时它们互">
+<meta name="twitter:description" content="title: 垃圾收集器与内存分配策略date: 2017-08-29 15:14:25tags: Java
+垃圾收集器与内存分配策略对象已死吗引用计数法给对象添加一个引用计数器，当有一个地方引用它时，计数器值加 1，引用失效时，计数器减 1，当计数器为 0 的对象就是不再被使用的。目前主流的 Java 虚拟机不使用此种方法，原因是它难以解决对象之间相互循环引用的问题。例如，对象 A 和对象 B">
 
 
 
@@ -364,7 +367,8 @@
       
 
       
-        <h1 id="垃圾收集器与内存分配策略"><a href="#垃圾收集器与内存分配策略" class="headerlink" title="垃圾收集器与内存分配策略"></a>垃圾收集器与内存分配策略</h1><h2 id="对象已死吗"><a href="#对象已死吗" class="headerlink" title="对象已死吗"></a>对象已死吗</h2><h3 id="引用计数法"><a href="#引用计数法" class="headerlink" title="引用计数法"></a>引用计数法</h3><p>给对象添加一个引用计数器，当有一个地方引用它时，计数器值加 1，引用失效时，计数器减 1，当计数器为 0 的对象就是不再被使用的。目前主流的 Java 虚拟机不使用此种方法，原因是它难以解决对象之间相互循环引用的问题。例如，对象 A 和对象 B 都有字段 <code>instance</code>，令 <code>A.instance = B</code> 以及 <code>B.instance = A</code> ，此时它们互相引用着对方，除此之外没有其它引用，实际上已经不可能被访问到，但它们的计数都不为 0，无法被 GC 回收。</p>
+        <p>title: 垃圾收集器与内存分配策略<br>date: 2017-08-29 15:14:25<br>tags: Java</p>
+<h1 id="垃圾收集器与内存分配策略"><a href="#垃圾收集器与内存分配策略" class="headerlink" title="垃圾收集器与内存分配策略"></a>垃圾收集器与内存分配策略</h1><h2 id="对象已死吗"><a href="#对象已死吗" class="headerlink" title="对象已死吗"></a>对象已死吗</h2><h3 id="引用计数法"><a href="#引用计数法" class="headerlink" title="引用计数法"></a>引用计数法</h3><p>给对象添加一个引用计数器，当有一个地方引用它时，计数器值加 1，引用失效时，计数器减 1，当计数器为 0 的对象就是不再被使用的。目前主流的 Java 虚拟机不使用此种方法，原因是它难以解决对象之间相互循环引用的问题。例如，对象 A 和对象 B 都有字段 <code>instance</code>，令 <code>A.instance = B</code> 以及 <code>B.instance = A</code> ，此时它们互相引用着对方，除此之外没有其它引用，实际上已经不可能被访问到，但它们的计数都不为 0，无法被 GC 回收。</p>
 <h3 id="可达性分析法"><a href="#可达性分析法" class="headerlink" title="可达性分析法"></a>可达性分析法</h3><p>从GC Roots 到对象不可达时，则证明此对象是不可用的。GC Roots 的对象包括：</p>
 <ul>
 <li>虚拟机栈中引用的对象</li>
@@ -387,6 +391,7 @@
 <p>最弱的一种引用关系。无法通过虚引用取得对象实例。为一个对象设置虚引用的唯一目的是能在该对象被回收时收到一个系统通知。对应的类为 <code>PhantomReference</code>。</p>
 </li>
 </ul>
+<a id="more"></a>
 <h3 id="回收方法区"><a href="#回收方法区" class="headerlink" title="回收方法区"></a>回收方法区</h3><p>主要回收两部分内容：<strong>废弃常量</strong>和<strong>无用的类</strong>。无用的类需满足下面三个条件：</p>
 <ul>
 <li>该类的所有实例已被回收</li>
@@ -472,7 +477,7 @@
 <p>发生 Minor GC 前，虚拟机先检查老年代的最大可用的连续空间是否大于新生代所有对象的总空间，若条件成立，则可确保 Minor GC 是安全的。若不成立，则查看 HandlePromotionFailure 是否允许担保失败，如果允许，则将检查老年代最大可用连续内存空间是否大于历次晋升到老年代的对象的平均大小，若大于，将尝试进行一次 Minor GC，尽管有风险；若小于，或 HandlePromotionFailure 不允许担保失败，则进行一次 Full GC。</p>
 </li>
 </ul>
-
+<!--more-->
       
     </div>
 

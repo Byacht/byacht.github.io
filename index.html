@@ -369,33 +369,17 @@
 
       
         
-          
-            <h1 id="JMM-和-Thread"><a href="#JMM-和-Thread" class="headerlink" title="JMM 和 Thread"></a>JMM 和 Thread</h1><p>为解决 CPU 与内存速度的不匹配，加入了高速缓存来作为内存与处理器之间的缓冲，但也引入了一个问题：缓存一致性。每个处理器拥有自己的高速缓存，用共享同一块主内存。当多个处理器的运算任务都涉及同一主内存时，可能导致各自的缓存数据不一致。为解决此问题，在访问缓存时需遵守一些特定的协议。</p>
+          <p>title: JMM 和 Thread<br>date: 2017-09-09 16:32:14<br>tags: Java</p>
+<h1 id="JMM-和-Thread"><a href="#JMM-和-Thread" class="headerlink" title="JMM 和 Thread"></a>JMM 和 Thread</h1><p>为解决 CPU 与内存速度的不匹配，加入了高速缓存来作为内存与处理器之间的缓冲，但也引入了一个问题：缓存一致性。每个处理器拥有自己的高速缓存，用共享同一块主内存。当多个处理器的运算任务都涉及同一主内存时，可能导致各自的缓存数据不一致。为解决此问题，在访问缓存时需遵守一些特定的协议。</p>
 <h2 id="Java-内存模型"><a href="#Java-内存模型" class="headerlink" title="Java 内存模型"></a>Java 内存模型</h2><h3 id="主内存和工作内存"><a href="#主内存和工作内存" class="headerlink" title="主内存和工作内存"></a>主内存和工作内存</h3><p>Java 内存模型的主要目标是定义程序中各个变量的访问规则，即虚拟机将变量存储到内存以及从内存读取变量的底层细节。这里所说的变量包括实例字段、静态字段和构成数组对象的元素，不包括局部变量和方法参数，因为它们是线程私有的。</p>
 <p>Java 内存模型规定了每个变量存储在主内存中，此外，每条线程还有自己的工作内存。线程对变量的操作必需在工作内存中进行，不能直接读写在主内存的变量。</p>
-<h3 id="内存间交互操作"><a href="#内存间交互操作" class="headerlink" title="内存间交互操作"></a>内存间交互操作</h3><p>关于主内存和工作内存之间的交互协议，Java 内存模型中定义了八种操作：</p>
-<ul>
-<li>lock</li>
-<li>unlock</li>
-<li>read</li>
-<li>load</li>
-<li>use</li>
-<li>assign</li>
-<li>store</li>
-<li>write</li>
-</ul>
-<h3 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h3><p>被 volatile 修饰的变量具有两种特性：</p>
-<ol>
-<li>保证此变量对所有线程的可见性。可见性是指当一条线程修改了此变量的值，新值对其它线程来说是立即得知的。虽然 volatile 变量在各个工作内存是一致的，但 Java 里面的运算并非原子操作，因此 volatile 变量的运算在并发过程中一样是不安全的。</li>
-<li>禁止指令重排序。</li>
-</ol>
-<p>由于 volatile 只能保证可见性，对于不符合以下两条规则的运算场景，仍需通过加锁来保证原子性。</p>
-<ul>
-<li>运算结果并不依赖变量当前值，或者能确保只有单一的线程修改变量的值</li>
-<li>变量不需要与其它状态变量共同参与不变约束</li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/08/JMM and Thread/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -534,8 +518,8 @@
 
       
         
-          
-            <h1 id="虚拟机字节码执行引擎"><a href="#虚拟机字节码执行引擎" class="headerlink" title="虚拟机字节码执行引擎"></a>虚拟机字节码执行引擎</h1><p>虚拟机是一个相对于 ”物理机“ 的概念，这两种均有执行代码的能力，其区别是物理机的执行引擎直接建立在处理器、硬件、指令集和操作系统层面上，而虚拟机的执行引擎是自己实现的，因此可以自行制定指令集与执行引擎的结构体系，执行不被硬件直接支持的指令集格式。</p>
+          <p>title: 虚拟机字节码执行引擎<br>date: 2017-09-06 16:59:34<br>tags: Java</p>
+<h1 id="虚拟机字节码执行引擎"><a href="#虚拟机字节码执行引擎" class="headerlink" title="虚拟机字节码执行引擎"></a>虚拟机字节码执行引擎</h1><p>虚拟机是一个相对于 ”物理机“ 的概念，这两种均有执行代码的能力，其区别是物理机的执行引擎直接建立在处理器、硬件、指令集和操作系统层面上，而虚拟机的执行引擎是自己实现的，因此可以自行制定指令集与执行引擎的结构体系，执行不被硬件直接支持的指令集格式。</p>
 <h2 id="运行时栈帧结构"><a href="#运行时栈帧结构" class="headerlink" title="运行时栈帧结构"></a>运行时栈帧结构</h2><p>栈帧是用于支持虚拟机进行方法调用和执行的数据结构，是虚拟机运行时数据区的虚拟机栈的栈元素。每个方法从调用到完成的过程都对应着一个栈帧在虚拟机栈从入栈到出栈的过程。</p>
 <p>每一个栈帧包括了局部变量表、操作数栈、动态连接、方法返回地址和附加信息。在编译期，栈帧需多大的局部变量表、多深的操作数栈已完全确定，并且写入到方法表的 Code 属性中。</p>
 <p>在活动线程中，只有位于栈顶的栈帧才是有效的。</p>
@@ -560,51 +544,13 @@
 <li><p>附加信息</p>
 </li>
 </ul>
-<h2 id="方法调用"><a href="#方法调用" class="headerlink" title="方法调用"></a>方法调用</h2><p>Class 文件编译过程中不包含连接步骤，一切方法调用在 Class 文件中存储的只是符号引用，而不是实际运行时内存布局的入口地址（直接引用），这也使得 Java 具有强大的动态扩展能力。</p>
-<ul>
-<li><p><strong>解析</strong></p>
-<p>在类加载的解析阶段，会将一部分符号引用转化为直接引用。这种解析能成立的前提是：方法在程序运行前就有一个确定的可调用版本，并且其在运行期是不可改变的。</p>
-<p>符合“编译期可知，运行期不变”的方法主要有静态方法和私有方法。在 Java 虚拟机里有五条方法调用的字节码指令：</p>
-<ul>
-<li>invokestatic</li>
-<li>invokespecial</li>
-<li>invokevirtual</li>
-<li>invokeinterface</li>
-<li>invokedynamic</li>
-</ul>
-<p>只要能被 invokestatic, invokespecial 调用的方法，都可以在解析阶段唯一确定调用版本。符合这个条件的有静态方法，私有方法，实例构造器和父类方法四类。它们在类加载阶段会把符合引用解析为方法的直接引用，这些方法称为非虚方法。其它方法则称为虚方法（除去 final 方法）。final 方法虽使用 invokevirtual 来调用，但由于它无法覆盖，也属于非虚方法。</p>
-</li>
-<li><p><strong>分派</strong></p>
-<ol>
-<li><p>静态分派</p>
-<p>变量有静态类型和实际类型。举个例子，类 <code>Man</code> 和类 <code>Woman</code> 都是类 <code>Human</code> 的子类，在下面的代码中：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Human man = <span class="keyword">new</span> Man();</div></pre></td></tr></table></figure>
-<p><code>Human</code> 称为变量的静态类型，<code>Man</code> 称为变量的实际类型。静态类型和实际类型在程序中都可发生一些变化。区别是静态类型的变化仅在使用时发生，变量本身的静态类型不会发生改变，并且静态类型是编译期可知的；而实际类型变化的结果只有在运行期才可确定。如下代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//实际类型变化</span></div><div class="line">Human man = <span class="keyword">new</span> Man();</div><div class="line">man = <span class="keyword">new</span> Woman();</div><div class="line"><span class="comment">//静态类型变化</span></div><div class="line">sr.sayHello((Man)man);</div></pre></td></tr></table></figure>
-<p>虚拟机在方法重载时是通过参数的静态类型而非实际类型作为判定依据的，而静态类型在编译期可知，因此，在编译阶段，虚拟机会根据参数的静态类型决定使用哪个重载版本。所有依赖静态类型来定位方法执行版本的分派动作称为静态分派。</p>
-</li>
-<li><p>动态分派</p>
-<p>先看一个例子：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Human man = <span class="keyword">new</span> Man();</div><div class="line"><span class="comment">//这里会调用类Man的sayHello方法</span></div><div class="line">man.sayHello();</div><div class="line">man = <span class="keyword">new</span> Woman();</div><div class="line"><span class="comment">//这里会调用类Woman的sayHello方法</span></div><div class="line">man.sayHello();</div></pre></td></tr></table></figure>
-<p>调用上述方法时会执行 invokevirtual 指令，其解析过程分为以下几步：</p>
-<p>(1) 找到操作数栈顶的第一个元素所指向对象的实际类型</p>
-<p>(2) 在该类型中找到与常量描述符和简单名称都相符的方法，若找到且访问权限通过，则返回这个方法的直接引用</p>
-<p>(3) 若找不到，则按照继承关系从下往上一次对该类型的父类进行步骤(2)</p>
-<p>(4) 若始终没找到，则抛出异常</p>
-<p>invokevirtual 指令执行的第一步是在运行期确定接收者的实际类型，调用过程中把常量池中的类方法符号引用解析到了不同的直接引用上，这个过程是 Java 语言方法重写的本质。</p>
-</li>
-<li><p>单分派与多分派</p>
-<p>方法接收者和方法的参数统称为宗量。Java 是静态多分派，动态单分派。</p>
-</li>
-<li><p>虚拟机动态分派的实现</p>
-<p>动态分派的方法版本选择中需要运行时在类的方法元数据中搜索合适的目标方法，基于性能考虑，常用的方法是在为类在方法区建立一个虚方法表，其存放着各个方法的实际入口地址。若某个方法没有在子类中重写，则虚方法表存放的是父类方法的入口地址。</p>
-</li>
-</ol>
-<p>​</p>
-</li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/04/Virtual Machine Execution Engine/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -743,8 +689,8 @@
 
       
         
-          
-            <h1 id="类加载机制"><a href="#类加载机制" class="headerlink" title="类加载机制"></a>类加载机制</h1><p>类加载的生命周期：加载，验证，准备，解析，初始化，使用，卸载。其中，验证，准备，解析统称为链接。加载，验证，准备，初始化，卸载的顺序是确定的，但并非按顺序依次执行，而是按顺序依次开始，而后通常是交叉进行。解析阶段在某些情况下可在初始化之后再开始，这是为了支持 Java 运行时绑定的特性。</p>
+          <p>title: Handler工作原理分析<br>date: 2017-09-14 00:21:25<br>tags: Java</p>
+<h1 id="类加载机制"><a href="#类加载机制" class="headerlink" title="类加载机制"></a>类加载机制</h1><p>类加载的生命周期：加载，验证，准备，解析，初始化，使用，卸载。其中，验证，准备，解析统称为链接。加载，验证，准备，初始化，卸载的顺序是确定的，但并非按顺序依次执行，而是按顺序依次开始，而后通常是交叉进行。解析阶段在某些情况下可在初始化之后再开始，这是为了支持 Java 运行时绑定的特性。</p>
 <h2 id="类加载的时机"><a href="#类加载的时机" class="headerlink" title="类加载的时机"></a>类加载的时机</h2><p>虚拟机并没有强制约束何时进行加载过程，但对于初始化过程，虚拟机严格规定了有且只有五种情况必须对类进行初始化：</p>
 <ul>
 <li>遇到 new, getstatic, putstatic, invokestatic 指令，若类没有进行过初始化，则需先初始化。最常见的 Java 代码场景：使用 new 关键字实例化对象，读取或设置一个类的静态字段，调用一个类的静态方法的时候</li>
@@ -759,29 +705,13 @@
 <li>常量在编译阶段会存入调用类的常量池中，本质上并没有直接引用到定义常量的类，因此不会触发类的初始化。</li>
 <li>通过数组定义来引用类，不会触发类的初始化。如：<code>SuperClass[] sca = new SuperClass[10]</code></li>
 </ul>
-<h2 id="类加载过程"><a href="#类加载过程" class="headerlink" title="类加载过程"></a>类加载过程</h2><ul>
-<li><p><strong>加载</strong></p>
-<p>加载过程需完成三件事：</p>
-<ol>
-<li>通过一个类的全限定名来获取定义此类的二进制字节流</li>
-<li>将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构</li>
-<li>在内存中生成一个代表这个类的 java.lang.Class 对象，作为方法区这个类的各种数据的访问入口</li>
-</ol>
-</li>
-<li><p><strong>验证</strong></p>
-<p>确保 Class 文件的字节流中包含的信息符合当前虚拟机的要求，并且不会危害虚拟机自身的安全。Java 语言对于一些不安全的行为，如访问数组边界以外的数据，将拒绝编译。但 Class 文件并非仅能来自 Java 源码，它可以使用任何途径产生。因此，需要验证这一过程。</p>
-</li>
-<li><p><strong>准备</strong></p>
-<p>正式为类变量分配内存并设置类变量的初始值。这里并不包括实例变量；其次，这里所说的初始值一般是指零值。如 <code>public static int value = 123;</code> ，那么准备阶段过后 <code>value</code> 的值应该是 0。将其赋值为 123 是在初始化阶段完成。也存在特殊情况：如果类字段的字段属性表中存在 ConstantValue 属性，那么在准备阶段就会初始化为所指定的值，如 <code>public static final int value = 123</code>。</p>
-</li>
-<li><p><strong>解析</strong></p>
-</li>
-<li><p><strong>初始化</strong></p>
-</li>
-</ul>
-<h2 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h2><p>比较两个类是否相等，需要这两个类是由<strong>同一个类加载器加载</strong>这一前提条件下。</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/02/Class Load/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -920,8 +850,8 @@
 
       
         
-          
-            <h1 id="类文件结构"><a href="#类文件结构" class="headerlink" title="类文件结构"></a>类文件结构</h1><p><strong>字节码</strong>是 Java 实现 “ Write Once, Run Anywhere ” 的基石。字节码存储于程序编译后产生的 Class 文件中。Class 文件是一组以八个字节为基础单位的二进制流。Class 文件格式采用两种数据类型来存储数据：</p>
+          <p>title: 类文件结构<br>date: 2017-09-01 23:31:20<br>tags: Java</p>
+<h1 id="类文件结构"><a href="#类文件结构" class="headerlink" title="类文件结构"></a>类文件结构</h1><p><strong>字节码</strong>是 Java 实现 “ Write Once, Run Anywhere ” 的基石。字节码存储于程序编译后产生的 Class 文件中。Class 文件是一组以八个字节为基础单位的二进制流。Class 文件格式采用两种数据类型来存储数据：</p>
 <ul>
 <li><p><strong>无符号数</strong></p>
 <p>以 u1，u2，u4，u8 分别代表 1，2，4，8 个字节的无符号数，无符号数可用来描述数字，索引引用，数量值或者按 UTF-8 编码构成的字符串值。</p>
@@ -948,45 +878,13 @@
 <li>字段的名称和描述符</li>
 <li>方法的名称和描述符。</li>
 </ul>
-</li>
-<li><p><strong>访问标志</strong></p>
-<p>紧接着两个字节代表访问标志，用于识别一些类或接口层次的访问信息。包括：是类还是接口，是否为public，是否为abstract，是否声明为final等等。</p>
-</li>
-<li><p><strong>类索引，父类索引，接口索引集合</strong></p>
-<p>类索引和父类索引均是一个 u2 类型的数据，而接口索引是一组 u2 类型的集合，因为 Java 支持单继承多实现。它们用于确定这个类的继承关系。类索引确定这个类的全限定名，父类索引确定这个类的父类的全限定名，接口索引集合描述这个类实现了哪些接口。</p>
-</li>
-<li><p><strong>字段表集合</strong></p>
-<p>用于描述接口或者类中声明的变量，不包括方法内部声明的局部变量。描述的信息包括：字段的作用域（public, private 等）、是实例变量还是类变量（static）、是否可变（final）、并发可见性（volatile）、可否被序列化（transient）、字段数据类型、字段名称。</p>
-</li>
-<li><p><strong>方法表集合</strong></p>
-<p>类似字段表。包括访问标志，名称索引，描述符索引，属性表集合。方法中的代码存放在方法属性表集合中一个名为”Code“的属性里。</p>
-</li>
-<li><p><strong>属性表集合</strong></p>
-<ul>
-<li><p>Code 属性</p>
-<p>出现在方法表的属性集合中，接口或抽象类中不存在此属性。主要包括了属性名称、属性值长度、操作数栈最大深度、局部变量表的存储空间、字节码指令和长度。字节码指令长度虽是一个 u4 的值，但实际只使用了 u2 的长度。因此，如果方法过长，生成的字节码指令过长，将无法编译。在字节码指令后是异常处理表集合（非必需存在）。</p>
-</li>
-<li><p>Exceptions 属性</p>
-<p>列举方法中可能抛出的受查异常，即方法描述时 throws 关键字列举的异常。</p>
-</li>
-<li><p>LineNumberTable 属性</p>
-<p>描述 Java 源码行号与字节码行号之间的对应关系。非必需。作用之一是抛出异常时显示出错的行号。</p>
-</li>
-<li><p>SourceFile 属性</p>
-<p>记录生成这个 Class 文件的源码文件名称。</p>
-</li>
-<li><p>InnerClasses 属性</p>
-<p>记录内部类与宿主类的关联。</p>
-</li>
-<li><p>Deprecated 和 Synthetic 属性</p>
-<p>Deprecated 用于某个类、字段或方法，表明已不推荐使用。</p>
-<p>Synthetic 代表此字段或方法不是由 Java 源码直接产生，而是编译期自行添加的。</p>
-</li>
-</ul>
-</li>
-</ol>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/30/Class File/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1125,8 +1023,8 @@
 
       
         
-          
-            <h1 id="垃圾收集器与内存分配策略"><a href="#垃圾收集器与内存分配策略" class="headerlink" title="垃圾收集器与内存分配策略"></a>垃圾收集器与内存分配策略</h1><h2 id="对象已死吗"><a href="#对象已死吗" class="headerlink" title="对象已死吗"></a>对象已死吗</h2><h3 id="引用计数法"><a href="#引用计数法" class="headerlink" title="引用计数法"></a>引用计数法</h3><p>给对象添加一个引用计数器，当有一个地方引用它时，计数器值加 1，引用失效时，计数器减 1，当计数器为 0 的对象就是不再被使用的。目前主流的 Java 虚拟机不使用此种方法，原因是它难以解决对象之间相互循环引用的问题。例如，对象 A 和对象 B 都有字段 <code>instance</code>，令 <code>A.instance = B</code> 以及 <code>B.instance = A</code> ，此时它们互相引用着对方，除此之外没有其它引用，实际上已经不可能被访问到，但它们的计数都不为 0，无法被 GC 回收。</p>
+          <p>title: 垃圾收集器与内存分配策略<br>date: 2017-08-29 15:14:25<br>tags: Java</p>
+<h1 id="垃圾收集器与内存分配策略"><a href="#垃圾收集器与内存分配策略" class="headerlink" title="垃圾收集器与内存分配策略"></a>垃圾收集器与内存分配策略</h1><h2 id="对象已死吗"><a href="#对象已死吗" class="headerlink" title="对象已死吗"></a>对象已死吗</h2><h3 id="引用计数法"><a href="#引用计数法" class="headerlink" title="引用计数法"></a>引用计数法</h3><p>给对象添加一个引用计数器，当有一个地方引用它时，计数器值加 1，引用失效时，计数器减 1，当计数器为 0 的对象就是不再被使用的。目前主流的 Java 虚拟机不使用此种方法，原因是它难以解决对象之间相互循环引用的问题。例如，对象 A 和对象 B 都有字段 <code>instance</code>，令 <code>A.instance = B</code> 以及 <code>B.instance = A</code> ，此时它们互相引用着对方，除此之外没有其它引用，实际上已经不可能被访问到，但它们的计数都不为 0，无法被 GC 回收。</p>
 <h3 id="可达性分析法"><a href="#可达性分析法" class="headerlink" title="可达性分析法"></a>可达性分析法</h3><p>从GC Roots 到对象不可达时，则证明此对象是不可用的。GC Roots 的对象包括：</p>
 <ul>
 <li>虚拟机栈中引用的对象</li>
@@ -1149,93 +1047,13 @@
 <p>最弱的一种引用关系。无法通过虚引用取得对象实例。为一个对象设置虚引用的唯一目的是能在该对象被回收时收到一个系统通知。对应的类为 <code>PhantomReference</code>。</p>
 </li>
 </ul>
-<h3 id="回收方法区"><a href="#回收方法区" class="headerlink" title="回收方法区"></a>回收方法区</h3><p>主要回收两部分内容：<strong>废弃常量</strong>和<strong>无用的类</strong>。无用的类需满足下面三个条件：</p>
-<ul>
-<li>该类的所有实例已被回收</li>
-<li>加载该类的 ClassLoader 已被回收</li>
-<li>该类对应的 java.lang.Class 对象没有在其它地方被引用，无法通过反射访问该类的方法</li>
-</ul>
-<h2 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h2><ul>
-<li><p><strong>标记-清除算法</strong></p>
-<p>标记所要回收的对象，标记完成后统一回收。缺点：标记和清除两个过程效率不高；标记清除后产生大量不连续的内存碎片。</p>
-</li>
-<li><p><strong>复制算法</strong></p>
-<p>将可用内存分为大小相等的两块，每次只使用其中一块。当一块内存用完了，将还存活的对象复制到另一块上面，再把已使用过的内存空间清理掉。实现简单，高效，代价是将内存缩小为原来的一半。在新生代中，对象 98% 是“朝生夕死”的，因此不必按照 1：1 来划分内存空间，而是将内存分为一块较大的 Eden 空间和两块较小的 Survivor 空间，每次使用 Eden 和其中一块Survivor。回收时，将还存活的对象复制到另一块 Survivor 空间上，清理掉另外两块空间。Eden和Survivor默认大小比例是 8：1。若 Survivor 空间不够，将依赖其它内存进行分配担保。</p>
-</li>
-<li><p><strong>标记-整理算法</strong></p>
-<p>老年代中对象存活率一般较高，不使用复制算法。与标记-清除算法类似，不同的是后续步骤不是直接回收对象，而是让所有存活的对象向另一端移动，然后直接清理掉端边界外的内存。</p>
-</li>
-<li><p><strong>分代收集算法</strong></p>
-<p>把Java堆分为新生代和老年代，为其选择不同的算法。</p>
-</li>
-</ul>
-<h2 id="HotSpot-的算法实现"><a href="#HotSpot-的算法实现" class="headerlink" title="HotSpot 的算法实现"></a>HotSpot 的算法实现</h2><h3 id="枚举根结点"><a href="#枚举根结点" class="headerlink" title="枚举根结点"></a>枚举根结点</h3><p>可达性分析过程中必需确保一致性，即分析过程中对象的引用关系不可变，这就要求 GC 进行时必需停顿所有 Java 执行线程。</p>
-<p>另外，可达性分析过程中若要一个不漏地检查完执行上下文和全局的引用位置，需耗费很多时间。因此，在 HotSpot 中，使用一组称为 OopMap 的数据结构来直接得知哪些地方存放着对象的引用，而不需逐个检查。</p>
-<h3 id="安全点"><a href="#安全点" class="headerlink" title="安全点"></a>安全点</h3><p>若为每条指令生成 OopMap 将会耗费大量空间。故实际中只在特定位置记录了这些信息，这些位置称为安全点。程序执行时只有到达安全点才能暂停。为了在 GC 发生时所有线程跑到最近的安全点才停下来，常采用主动式中断的方式：当 GC 需中断时，不直接对线程进行操作，仅设置一个标志，让个线程轮询此标志，发现中断标志为真时自己就中断挂起，轮询标志与安全点是重合的。</p>
-<h3 id="安全区域"><a href="#安全区域" class="headerlink" title="安全区域"></a>安全区域</h3><p>程序不执行时，例如线程处于 Sleep 或 Blocked 状态，此时线程无法响应中断请求。为解决此问题，采用安全区域。安全区域是指在一段代码片段内，引用关系不会发生改变，在此区域中任何地方进行 GC 是安全的。</p>
-<p>线程执行到 Safe Region 时，标志自己进入了此区域，在这段时间内，若 JVM 要进行 GC，就不用管标志为安全区域的线程了。当线程要离开 Safe Region 时，需先检查是否完成了根结点枚举，若完成则线程继续执行，否则需等待知道收到可安全离开安全区域的信号为止。</p>
-<h2 id="垃圾收集器"><a href="#垃圾收集器" class="headerlink" title="垃圾收集器"></a>垃圾收集器</h2><p>首先来了解下<strong>并行</strong>和<strong>并发</strong>的概念：</p>
-<p><strong>并行</strong>：多条垃圾收集线程并行执行，而用户线程处于等待状态。</p>
-<p><strong>并发</strong>：用户线程与垃圾收集器线程同时执行，但不一定是并行的，可能是交替执行。</p>
-<ul>
-<li><p><strong>Serial 收集器</strong></p>
-<p>单线程收集器，使用一个 CPU 或一条收集线程收集，收集时必需暂停所有线程。优点：简单而高效（与其它收集器的单线程相比）。Client 模式下的虚拟机的选择。</p>
-</li>
-<li><p><strong>Parnew 收集器</strong></p>
-<p>Serial 收集器的多线程版本。使用多条线程进行垃圾收集。在单 CPU 环境下性能不比 Serial 好。Server 模式下的虚拟机中首选的新生代收集器，其中一个原因是目前除了 Serial 收集器，只有它能与 CMS 收集器配合工作。</p>
-</li>
-<li><p><strong>Paralel Scavenge 收集器</strong></p>
-<p>并行多线程的新生代收集器，采用复制算法。与上面两个收集器不同，其关注的不是缩短停顿时间，而是吞吐量。所谓吞吐量，举个例子，虚拟机运行了 100 分钟，其中 GC 进行了 1 分钟，吞吐量就是 99%。</p>
-</li>
-<li><p><strong>Serial Old 收集器</strong></p>
-<p>Serial 收集器的老年代版本，使用标记-整理算法。</p>
-</li>
-<li><p><strong>Parallel Old 收集器</strong></p>
-<p>Paralel Scavenge 的老年代版本，使用多线程和标记-整理算法。</p>
-</li>
-<li><p><strong>Cms 收集器</strong></p>
-<p>采用标记-清除算法。收集主要包括四个步骤：</p>
-<ol>
-<li>初始标记：仅标记一下 GC Roots 能直接关联的对象，速度快</li>
-<li>并发标记：进行 GC Roots Tracing 的过程</li>
-<li>重新标记：修正并发标记过程中因用户程序运行而导致标记产生变动的那一部分对象</li>
-<li>并发清除</li>
-</ol>
-<p>因耗时较长的并发标记和并发清除过程可以与用户线程一起工作，故停顿时间较短。</p>
-<p>其缺点主要有：</p>
-<ol>
-<li>对 CPU 资源敏感。在并发阶段，虽不会导致用户线程停顿，但会占用线程资源而使程序变慢。</li>
-<li>无法处理浮动垃圾。并发清除阶段用户线程仍在运行，会产生垃圾。因此，在清除过程中需预留一定内存空间供用户线程使用。若预留的内存不足，虚拟机将临时启用 Serial Old 收集器重新进行收集，导致停顿时间变长。</li>
-<li>标记-清除算法会产生大量内存碎片。</li>
-</ol>
-</li>
-<li><p><strong>G1 收集器</strong></p>
-<p>主要包括以下四个步骤：</p>
-<ol>
-<li>初始标记</li>
-<li>并发标记</li>
-<li>最终标记</li>
-<li>筛选回收</li>
-</ol>
-</li>
-</ul>
-<h2 id="内存分配"><a href="#内存分配" class="headerlink" title="内存分配"></a>内存分配</h2><ul>
-<li><p>对象优先在 Eden 区分配</p>
-</li>
-<li><p>大对象直接进入老年代</p>
-</li>
-<li><p>长期存活的对象将进入老年代</p>
-<p>若对象出生在 Eden ，在进行一次 Minor GC 后仍存活并能被 Survivor 容纳，则将对象的年龄加一，当年龄达到指定大小时将晋升到老年代中。</p>
-</li>
-<li><p>动态对象年龄判定</p>
-<p>如果在 Survivor 空间中相同年龄的对象的大小大于总空间的一半，则年龄大于等于这些年龄的对象将进入老年代，而无需等到指定年龄。</p>
-</li>
-<li><p>空间分配担保</p>
-<p>发生 Minor GC 前，虚拟机先检查老年代的最大可用的连续空间是否大于新生代所有对象的总空间，若条件成立，则可确保 Minor GC 是安全的。若不成立，则查看 HandlePromotionFailure 是否允许担保失败，如果允许，则将检查老年代最大可用连续内存空间是否大于历次晋升到老年代的对象的平均大小，若大于，将尝试进行一次 Minor GC，尽管有风险；若小于，或 HandlePromotionFailure 不允许担保失败，则进行一次 Full GC。</p>
-</li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/27/GC/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
